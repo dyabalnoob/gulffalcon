@@ -1,0 +1,470 @@
+// Gulf Falcon — Futuristic Next.js Site (App Router)
+// Modernized with Framer Motion, glassmorphism, scroll progress, brand marquee,
+// animated hero, masonry gallery, and floating WhatsApp. RTL-first.
+// Drop-in ready for Next 14 + Tailwind. No external UI libs required.
+
+/*
+Folder tree
+.
+├─ app/
+│  ├─ layout.tsx
+│  ├─ globals.css
+│  ├─ page.tsx                 // Home: animated hero + sections
+│  ├─ products/page.tsx        // Catalog with live filters + chip tags
+│  ├─ brands/page.tsx          // Brand marquee + grid
+│  ├─ brands/[slug]/page.tsx   // Brand details → filtered products
+│  ├─ gallery/page.tsx         // Masonry grid + Lightbox
+│  ├─ contact/page.tsx         // Contact + map placeholder
+│  └─ api/contact/route.ts     // Demo endpoint
+├─ components/
+│  ├─ Navbar.tsx               // Glass navbar + scroll progress
+│  ├─ Footer.tsx
+│  ├─ Hero.tsx                 // Video/gradient hero w/ motion
+│  ├─ BrandMarquee.tsx         // Infinite marquee
+│  ├─ Section.tsx
+│  ├─ ProductCard.tsx          // 3D-tilt on hover
+│  ├─ Filters.tsx              // Search + brand + tags chips
+│  ├─ Lightbox.tsx
+│  ├─ Masonry.tsx              // Simple CSS masonry
+│  └─ ThemeToggle.tsx          // Dark/Light
+├─ data/
+│  ├─ products.json
+│  └─ brands.json
+├─ public/
+│  ├─ logo-saqr-gulf.png
+│  ├─ hero.mp4                  // optional hero video
+│  ├─ brands/*.png
+│  └─ products/*.{jpg,png,webp}
+├─ scripts/generate-catalog.ts
+├─ tailwind.config.ts
+├─ postcss.config.js
+├─ next.config.js
+└─ package.json
+*/
+
+// ========================= package.json =========================
+export const packageJson = {
+  name: 'gulf-falcon-futuristic',
+  private: true,
+  scripts: {
+    dev: 'next dev',
+    build: 'next build',
+    start: 'next start',
+    catalog: "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/generate-catalog.ts"
+  },
+  dependencies: {
+    next: '14.2.5',
+    react: '18.3.1',
+    'react-dom': '18.3.1',
+    'framer-motion': '^11.3.19'
+  },
+  devDependencies: {
+    tailwindcss: '^3.4.10',
+    autoprefixer: '^10.4.20',
+    postcss: '^8.4.45',
+    typescript: '^5.5.4',
+    'ts-node': '^10.9.2'
+  }
+}
+
+// ========================= tailwind.config.ts =========================
+export const tailwindConfig = import type { Config } from 'tailwindcss'
+export default {
+  darkMode: ['class'],
+  content: ['./app/**/*.{ts,tsx}','./components/**/*.{ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        brand: { green:'#116255', ink:'#293f3a', gold:'#cfb094' }
+      },
+      boxShadow: {
+        glass: '0 8px 30px rgba(0,0,0,0.15)'
+      }
+    }
+  },
+  plugins: []
+} satisfies Config;
+
+// ========================= postcss.config.js =========================
+export const postcssConfig = module.exports = { plugins: { tailwindcss: {}, autoprefixer: {} } };
+
+// ========================= next.config.js =========================
+export const nextConfig = /** @type {import('next').NextConfig} */
+const nextConfig = { images: { formats: ['image/avif','image/webp'] } };
+module.exports = nextConfig;;
+
+// ========================= app/globals.css =========================
+export const globalsCss = @tailwind base;@tailwind components;@tailwind utilities;
+:root{color-scheme:light}
+html{scroll-behavior:smooth}
+body{@apply bg-[#0c1614] text-white}
+.light body{@apply bg-[#f7f8f7] text-brand-ink}
+.container{@apply max-w-6xl mx-auto px-6}
+.card{@apply rounded-3xl bg-white/10 backdrop-blur-xl shadow-glass border border-white/10}
+.light .card{@apply bg-white shadow-md border-white/60}
+.btn{@apply rounded-2xl px-6 py-3 font-bold transition}
+.btn-primary{@apply bg-[#44a770] text-white hover:bg-[#3c9664]}
+.btn-ghost{@apply bg-white/10 ring-1 ring-white/30 hover:bg-white/20}
+.brand-gradient{background:radial-gradient(1200px 600px at 10% 10%,#2aa47c33,transparent),radial-gradient(1200px 600px at 90% 90%,#cfb09433,transparent)}
+.progress{position:fixed;inset-inline:0;top:0;height:3px;background:linear-gradient(90deg,#cfb094,#44a770)}
+;
+
+// ========================= app/layout.tsx =========================
+export const appLayout = import './globals.css'
+import type { Metadata } from 'next'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+
+export const metadata: Metadata = {
+  title:'مؤسسة الصقر الخليجي — واجهة فاخرة',
+  description:'مستقبل الأناقة الرجالية. تعريف، فروع، كتالوج، تواصل.'
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang='ar' dir='rtl' className='light'>
+      <body>
+        <Navbar/>
+        {children}
+        <Footer/>
+      </body>
+    </html>
+  )
+};
+
+// ========================= components/Navbar.tsx =========================
+export const navbarTsx = "use client";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import ThemeToggle from './ThemeToggle';
+
+const links = [
+  { href: '/', label: 'الرئيسية' },
+  { href: '/products', label: 'المنتجات' },
+  { href: '/brands', label: 'الماركات' },
+  { href: '/gallery', label: 'المعرض' },
+  { href: '/contact', label: 'تواصل' },
+];
+
+export default function Navbar(){
+  const pathname = usePathname();
+  return (
+    <header className='sticky top-0 z-50 backdrop-blur-xl bg-[#0c1614aa] light:bg-white/70 border-b border-white/10 light:border-black/10'>
+      <div className='container h-16 flex items-center justify-between'>
+        <Link href='/' className='flex items-center gap-3'>
+          <div className='w-10 h-10 rounded-2xl bg-white/10 light:bg-brand-green/10 grid place-items-center text-xl font-bold'>ص</div>
+          <span className='font-bold'>الصقر الخليجي</span>
+        </Link>
+        <nav className='hidden md:flex items-center gap-1'>
+          {links.map(l => (
+            <Link key={l.href} href={l.href}
+              className={px-3 py-2 rounded-xl hover:bg-white/10 light:hover:bg-black/5 ${pathname===l.href?'bg-white/15 light:bg-black/5':''}}>{l.label}</Link>
+          ))}
+        </nav>
+        <ThemeToggle/>
+      </div>
+      <div className='progress' style={{transform:scaleX(${typeof window!=='undefined'? (document.documentElement.scrollTop/(document.documentElement.scrollHeight-document.documentElement.clientHeight)||0) : 0}), transformOrigin:'0 50%'}} />
+    </header>
+  );
+};
+
+// ========================= components/ThemeToggle.tsx =========================
+export const themeToggleTsx = "use client";export default function ThemeToggle(){
+  return <button onClick={()=>{
+    const el=document.documentElement; el.classList.toggle('light');
+  }} className='px-3 py-2 text-sm rounded-xl bg-white/10 light:bg-black/5'>الوضع</button>
+};
+
+// ========================= components/Section.tsx =========================
+export const sectionTsx = export default function Section({ id, title, children, tone='light' }:{id?:string;title:string;children:React.ReactNode;tone?:'light'|'muted'}){
+  return (
+    <section id={id} className={${tone==='muted'?'brand-gradient':''} py-20}>
+      <div className='container'>
+        <h2 className='text-3xl font-bold mb-6 text-center text-brand-gold light:text-brand-green'>{title}</h2>
+        {children}
+      </div>
+    </section>
+  )
+};
+
+// ========================= components/Hero.tsx =========================
+export const heroTsx = "use client";import { motion } from 'framer-motion';
+export default function Hero(){
+  return (
+    <section className='relative overflow-hidden min-h-[70vh] flex items-center brand-gradient'>
+      <video className='absolute inset-0 w-full h-full object-cover opacity-20' autoPlay loop muted playsInline src='/hero.mp4' />
+      <div className='container relative z-10 text-center'>
+        <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6}}>
+          <div className='mx-auto mb-6 w-40 h-40 rounded-3xl bg-white/10 light:bg-brand-green/10 grid place-items-center text-3xl font-bold'>ص</div>
+          <h1 className='text-4xl md:text-6xl font-black tracking-tight'>مستقبل الأناقة الرجالية</h1>
+          <p className='mt-4 text-lg opacity-90'>مشالح فاخرة. ثياب معدّة حسب المقاس. واجهة تعاون محلي ودولي.</p>
+          <div className='mt-8 flex items-center justify-center gap-3'>
+            <a href='/products' className='btn btn-primary'>استعرض الكتالوج</a>
+            <a href='/contact' className='btn btn-ghost'>تواصل</a>
+          </div>
+        </motion.div>
+      </div>
+      <div className='absolute -top-40 -left-40 w-[40rem] h-[40rem] rounded-full bg-[#44a77033] blur-3xl'></div>
+      <div className='absolute -bottom-40 -right-40 w-[40rem] h-[40rem] rounded-full bg-[#cfb09433] blur-3xl'></div>
+    </section>
+  )
+};
+
+// ========================= components/BrandMarquee.tsx =========================
+export const marqueeTsx = "use client";import Image from 'next/image';
+export default function BrandMarquee({ items }:{items:{name:string,slug:string}[]}){
+  return (
+    <div className='relative overflow-hidden'>
+      <div className='flex gap-10 animate-[scroll_40s_linear_infinite] will-change-transform'>
+        {[...items,...items].map((b,i)=> (
+          <div key={i} className='shrink-0 w-40 h-16 relative opacity-80 hover:opacity-100 transition'>
+            <Image src={/brands/${b.slug}.png} alt={b.name} fill className='object-contain' />
+          </div>
+        ))}
+      </div>
+      <style jsx>{@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}}</style>
+    </div>
+  )
+};
+
+// ========================= components/ProductCard.tsx =========================
+export const productCardTsx = "use client";import { motion } from 'framer-motion';import Image from 'next/image';
+export type Product={id:string,title:string,image:string,brand?:string,tags?:string[]}
+export default function ProductCard({p,onClick}:{p:Product;onClick?:(p:Product)=>void}){
+  return (
+    <motion.button whileHover={{y:-4,rotateX:0.5}} className='card p-3 text-right hover:shadow-2xl' onClick={()=>onClick?.(p)}>
+      <div className='relative w-full h-56 rounded-2xl overflow-hidden'>
+        <Image src={p.image} alt={p.title} fill sizes='(max-width:768px) 100vw, 33vw' className='object-cover' />
+      </div>
+      <div className='mt-3'>
+        <h3 className='text-base font-semibold'>{p.title}</h3>
+        {p.brand && <div className='text-xs opacity-70'>{p.brand}</div>}
+      </div>
+    </motion.button>
+  )
+};
+
+// ========================= components/Filters.tsx =========================
+export const filtersTsx = "use client";import { useMemo, useState } from 'react';import type { Product } from './ProductCard';
+export default function Filters({all,brands,tags,onFilter}:{all:Product[];brands:string[];tags:string[];onFilter:(ls:Product[])=>void}){
+  const [q,setQ]=useState(''); const [brand,setBrand]=useState(''); const [active,setActive]=useState<string[]>([]);
+  const filtered = useMemo(()=> all.filter(p=>
+    (!brand || p.brand===brand) && (!q || p.title.toLowerCase().includes(q.toLowerCase())) &&
+    (active.length===0 || active.every(t=>p.tags?.includes(t)))
+  ),[q,brand,active,all]);
+  return (
+    <div className='card p-4 flex flex-col gap-4'>
+      <div className='flex flex-col md:flex-row gap-3'>
+        <input className='w-full md:w-1/2 rounded-2xl px-4 py-3 bg-white/5 light:bg-white border border-white/10 light:border-black/10' placeholder='بحث بالاسم' value={q} onChange={e=>setQ(e.target.value)}/>
+        <select className='w-full md:w-1/3 rounded-2xl px-4 py-3 bg-white/5 light:bg-white border border-white/10 light:border-black/10' value={brand} onChange={e=>setBrand(e.target.value)}>
+          <option value=''>كل الماركات</option>
+          {brands.map(b=> <option key={b} value={b}>{b}</option>)}
+        </select>
+        <button className='btn btn-primary' onClick={()=>onFilter(filtered)}>تطبيق</button>
+      </div>
+      <div className='flex flex-wrap gap-2'>
+        {tags.map(t=> (
+          <button key={t} onClick={()=> setActive(a=> a.includes(t)? a.filter(x=>x!==t): [...a,t])} className={px-3 py-1 rounded-full text-sm border ${active.includes(t)?'bg-[#44a770] text-white border-transparent':'bg-white/5 light:bg-white border-white/10 light:border-black/10'}}>{t}</button>
+        ))}
+        {active.length>0 && <button className='px-3 py-1 rounded-full text-sm bg-white/10 light:bg-black/5' onClick={()=>setActive([])}>مسح</button>}
+      </div>
+    </div>
+  )
+};
+
+// ========================= components/Lightbox.tsx =========================
+export const lightboxTsx = "use client";import Image from 'next/image';export default function Lightbox({open,src,alt,onClose}:{open:boolean;src:string;alt:string;onClose:()=>void}){if(!open)return null;return(
+  <div className='fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4' onClick={onClose}>
+    <div className='relative w-full max-w-5xl h-[75vh]' onClick={e=>e.stopPropagation()}>
+      <Image src={src} alt={alt} fill className='object-contain'/>
+      <button className='absolute top-3 left-3 btn btn-ghost'>إغلاق</button>
+    </div>
+  </div>)};
+
+// ========================= components/Masonry.tsx =========================
+export const masonryTsx = export default function Masonry({children}:{children:React.ReactNode}){
+  return <div className='columns-2 md:columns-3 gap-4 [column-fill:_balance] *:mb-4'>{children}</div>
+};
+
+// ========================= components/Footer.tsx =========================
+export const footerTsx = export default function Footer(){
+  return (
+    <footer className='mt-20 pb-10 text-sm opacity-80'>
+      <div className='container flex flex-col md:flex-row items-center justify-between gap-3'>
+        <p>© {new Date().getFullYear()} مؤسسة الصقر الخليجي للأناقة الرجالية</p>
+        <nav className='flex gap-4'>
+          <a href='/privacy'>الخصوصية</a>
+          <a href='/contact'>تواصل</a>
+        </nav>
+      </div>
+      <a href='https://wa.me/966500000000' className='fixed bottom-6 left-6 btn btn-primary shadow-glass'>واتساب</a>
+    </footer>
+  )
+};
+
+// ========================= data seed =========================
+export const brandsJson = [ { name:'Brand A', slug:'brand-a' }, { name:'Brand B', slug:'brand-b' }, { name:'Brand C', slug:'brand-c' } ];
+export const productsJson = Array.from({length:48}).map((_,i)=>({
+  id:p-${String(i+1).padStart(3,'0')},
+  title: i%3===0?مشلح فاخر ${i+1}: i%3===1?ثوب رجالي ${i+1}:اكسسوارات ${i+1},
+  image:/products/sample-${(i%6)+1}.jpg,
+  brand: brandsJson[i%brandsJson.length].name,
+  tags: i%3===0?['مشالح']: i%3===1?['ثياب']: ['اكسسوارات']
+}));
+
+// ========================= app/page.tsx =========================
+export const homePage = import Hero from '@/components/Hero';
+import Section from '@/components/Section';
+import BrandMarquee from '@/components/BrandMarquee';
+import brands from '@/data/brands.json';
+import Image from 'next/image';
+
+export default function Home(){
+  return (
+    <main>
+      <Hero/>
+      <Section title='من نحن'>
+        <p className='text-lg leading-8 text-center opacity-90 max-w-3xl mx-auto'>جذورنا منذ 1979 — براند 1986 — مقرنا أسواق القرية الشعبية بالرياض. واجهة تعاون محلي ودولي.</p>
+      </Section>
+      <Section title='شركاؤنا'>
+        <BrandMarquee items={brands as any}/>
+      </Section>
+      <Section title='مختارات'>
+        <div className='grid md:grid-cols-3 gap-6'>
+          {[1,2,3].map(i=> (
+            <div key={i} className='card p-4'>
+              <div className='relative w-full h-56 overflow-hidden rounded-2xl'>
+                <Image src={/products/sample-${i}.jpg} alt='' fill className='object-cover'/>
+              </div>
+              <div className='mt-3 text-center font-semibold'>قطعة مختارة {i}</div>
+            </div>
+          ))}
+        </div>
+      </Section>
+    </main>
+  )
+};
+
+// ========================= app/products/page.tsx =========================
+export const productsPage = "use client";import { useEffect, useMemo, useState } from 'react';
+import products from '@/data/products.json'; import brands from '@/data/brands.json';
+import ProductCard, { type Product } from '@/components/ProductCard';
+import Filters from '@/components/Filters'; import Lightbox from '@/components/Lightbox';
+
+export default function Products(){
+  const all = products as Product[]; const brandNames = (brands as any[]).map(b=>b.name);
+  const tags = Array.from(new Set(all.flatMap(p=>p.tags||[])));
+  const [list,setList]=useState(all); const [open,setOpen]=useState(false); const [current,setCurrent]=useState<Product|null>(null);
+  useEffect(()=>{ console.assert(all.length>0,'products should not be empty'); },[]);
+  return (
+    <main className='container py-10'>
+      <h1 className='text-3xl font-bold text-brand-gold light:text-brand-green text-center mb-6'>المنتجات</h1>
+      <Filters all={all} brands={brandNames} tags={tags} onFilter={setList}/>
+      <div className='mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+        {list.map(p=> <ProductCard key={p.id} p={p} onClick={pp=>{setCurrent(pp);setOpen(true)}}/>)}
+      </div>
+      <Lightbox open={open} src={current?.image||''} alt={current?.title||''} onClose={()=>setOpen(false)}/>
+    </main>
+  )
+};
+
+// ========================= app/brands/page.tsx =========================
+export const brandsPage = import brands from '@/data/brands.json'; import Image from 'next/image'; import Link from 'next/link';
+export default function Brands(){
+  return (
+    <main className='container py-10'>
+      <h1 className='text-3xl font-bold text-brand-gold light:text-brand-green text-center mb-6'>الماركات</h1>
+      <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+        {(brands as any[]).map(b=> (
+          <Link key={b.slug} href={/brands/${b.slug}} className='card p-4 flex items-center justify-center hover:shadow-2xl'>
+            <div className='relative w-40 h-16'>
+              <Image src={/brands/${b.slug}.png} alt={b.name} fill className='object-contain'/>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </main>
+  )
+};
+
+// ========================= app/brands/[slug]/page.tsx =========================
+export const brandSlugPage = import { notFound } from 'next/navigation'; import Image from 'next/image';
+import brands from '@/data/brands.json'; import products from '@/data/products.json';
+export default function Brand({params}:{params:{slug:string}}){
+  const brand=(brands as any[]).find(b=>b.slug===params.slug); if(!brand) return notFound();
+  const list=(products as any[]).filter((p:any)=>p.brand===brand.name);
+  return (
+    <main className='container py-10'>
+      <div className='flex items-center gap-4 justify-center mb-6'>
+        <div className='relative w-48 h-20'><Image src={/brands/${brand.slug}.png} alt={brand.name} fill className='object-contain'/></div>
+      </div>
+      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+        {list.map((p:any)=> (
+          <div key={p.id} className='card p-3'>
+            <div className='relative w-full h-56 rounded-2xl overflow-hidden'><Image src={p.image} alt={p.title} fill className='object-cover'/></div>
+            <div className='mt-3 font-semibold'>{p.title}</div>
+          </div>
+        ))}
+      </div>
+    </main>
+  )
+};
+
+// ========================= app/gallery/page.tsx =========================
+export const galleryPage = "use client";import products from '@/data/products.json';import Masonry from '@/components/Masonry';import Lightbox from '@/components/Lightbox';import { useState } from 'react';
+export default function Gallery(){
+  const items=(products as any[]).slice(0,120);
+  const [open,setOpen]=useState(false); const [src,setSrc]=useState('');
+  return (
+    <main className='container py-10'>
+      <h1 className='text-3xl font-bold text-brand-gold light:text-brand-green text-center mb-6'>المعرض</h1>
+      <Masonry>
+        {items.map((p,i)=> (
+          <button key={i} onClick={()=>{setSrc(p.image);setOpen(true)}} className='overflow-hidden rounded-2xl block hover:opacity-90'>
+            <img src={p.image} alt={p.title} className='w-full h-auto' loading='lazy'/>
+          </button>
+        ))}
+      </Masonry>
+      <Lightbox open={open} src={src} alt='' onClose={()=>setOpen(false)}/>
+    </main>
+  )
+};
+
+// ========================= app/contact/page.tsx =========================
+export const contactPage = "use client";import { useState } from 'react';
+export default function Contact(){
+  const [sent,setSent]=useState(false);
+  return (
+    <main className='container py-10'>
+      <h1 className='text-3xl font-bold text-brand-gold light:text-brand-green text-center mb-6'>تواصل معنا</h1>
+      <form onSubmit={(e)=>{e.preventDefault();setSent(true)}} className='max-w-2xl mx-auto grid gap-4'>
+        <input required placeholder='الاسم الكامل' className='rounded-2xl px-4 py-3 bg-white/5 light:bg-white border border-white/10 light:border-black/10'/>
+        <input required type='email' placeholder='البريد الإلكتروني' className='rounded-2xl px-4 py-3 bg-white/5 light:bg-white border border-white/10 light:border-black/10'/>
+        <input placeholder='رقم الجوال' className='rounded-2xl px-4 py-3 bg-white/5 light:bg-white border border-white/10 light:border-black/10'/>
+        <textarea required placeholder='رسالتك' className='rounded-2xl px-4 py-3 min-h-[120px] bg-white/5 light:bg-white border border-white/10 light:border-black/10'/>
+        <button className='btn btn-primary' type='submit'>إرسال</button>
+        {sent && <div className='text-green-400 light:text-green-700'>تم الإرسال تجريبيًا.</div>}
+      </form>
+      <div className='mt-10 card p-4 text-center'>خريطة: ضع تضمين Google Maps هنا لاحقًا.</div>
+    </main>
+  )
+};
+
+// ========================= app/api/contact/route.ts =========================
+export const contactApi = import { NextResponse } from 'next/server'; export async function POST(){ return NextResponse.json({ok:true}) };
+
+// ========================= scripts/generate-catalog.ts =========================
+export const genScript = import { readdirSync, writeFileSync } from 'fs'; import { join, basename, extname } from 'path';
+const pub=join(process.cwd(),'public'); const prodDir=join(pub,'products'); const brandDir=join(pub,'brands');
+function titleFromName(n:string){ return basename(n,extname(n)).replace(/[-_]+/g,' ').trim(); }
+const brandFiles=readdirSync(brandDir).filter(f=>/\.(png|jpe?g|webp|svg)$/i.test(f)); const brands=brandFiles.map(f=>({name:titleFromName(f),slug:basename(f,extname(f)).toLowerCase()}));
+writeFileSync('data/brands.json', JSON.stringify(brands,null,2));
+const prodFiles=readdirSync(prodDir).filter(f=>/\.(png|jpe?g|webp)$/i.test(f));
+const products=prodFiles.map((f,i)=>{ const t=titleFromName(f); const [title,brandHint]=t.split('__'); return { id:+"p-${String(${"i+1"}).padStart(4,'0')}"+, title:title.trim(), image:'/products/'+f, brand:brandHint?brandHint.trim():undefined, tags:[] as string[] }; });
+writeFileSync('data/products.json', JSON.stringify(products,null,2));
+console.log('brands:',brands.length,'products:',products.length);;
+
+// ========================= Minimal tests (runtime assertions) =========================
+export const testsNote = // Runtime checks (e.g., in products page useEffect):
+// console.assert(Array.isArray(products) && products.length>=1, 'catalog should be populated');
+// console.assert((brands as any[]).every(b=>b.slug), 'brand slug missing');;
