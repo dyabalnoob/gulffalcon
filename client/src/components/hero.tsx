@@ -7,13 +7,14 @@ export default function Hero() {
     <section className="relative overflow-hidden min-h-screen flex items-center brand-gradient">
       {/* Video Background */}
       <video 
-        className="absolute inset-0 w-full h-full object-cover opacity-20" 
+        className="absolute inset-0 w-full h-full object-cover opacity-30" 
         autoPlay 
         loop 
         muted 
         playsInline
+        preload="auto"
       >
-        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+        <source src="/attached_assets/فيديو الخلفيه الصقر الخليجي  _1757181776177.mp4" type="video/mp4" />
       </video>
       
       {/* Hero Content */}
