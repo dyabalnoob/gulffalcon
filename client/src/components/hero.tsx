@@ -1,20 +1,30 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import logoImage from "@assets/logo الصقر الخليجي_1757177659109.png";
+import heroVideo from "@assets/فيديو الخلفيه الصقر الخليجي  _1757181776177.mp4";
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center brand-gradient">
       {/* Video Background */}
       <video 
-        className="absolute inset-0 w-full h-full object-cover opacity-30" 
+        className="absolute inset-0 w-full h-full object-cover opacity-40" 
         autoPlay 
         loop 
         muted 
         playsInline
         preload="auto"
+        poster={logoImage}
+        onError={(e) => {
+          console.error('Video loading error:', e);
+          // Hide video on error
+          (e.target as HTMLVideoElement).style.display = 'none';
+        }}
+        onLoadStart={() => console.log('Video loading started')}
+        onCanPlay={() => console.log('Video ready to play')}
+        onLoadedData={() => console.log('Video data loaded')}
       >
-        <source src="/attached_assets/فيديو الخلفيه الصقر الخليجي  _1757181776177.mp4" type="video/mp4" />
+        <source src={heroVideo} type="video/mp4" />
       </video>
       
       {/* Hero Content */}
