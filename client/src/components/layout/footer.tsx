@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import logoImage from "@assets/logo الصقر الخليجي_1757177659109.png";
 
 export default function Footer() {
   return (
@@ -13,8 +14,12 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 dark:bg-white/10 light:bg-brand-green/10 grid place-items-center text-2xl font-bold text-accent">
-                ص
+              <div className="w-12 h-12 rounded-2xl bg-white/10 dark:bg-white/10 light:bg-brand-green/10 overflow-hidden flex items-center justify-center">
+                <img 
+                  src={logoImage} 
+                  alt="مؤسسة الصقر الخليجي" 
+                  className="w-10 h-10 object-contain"
+                />
               </div>
               <span className="text-xl font-bold">مؤسسة الصقر الخليجي</span>
             </div>
