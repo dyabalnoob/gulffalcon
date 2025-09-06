@@ -17,13 +17,13 @@ const availableTags = ["ثوب", "مشلح", "بشت", "فاخر", "تقليدي
 
 export default function ProductFilters({ brands, onFilter }: ProductFiltersProps) {
   const [search, setSearch] = useState("");
-  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState("all");
   const [activeTags, setActiveTags] = useState<string[]>([]);
 
   const handleFilter = () => {
     onFilter({
       search,
-      brandId: selectedBrand,
+      brandId: selectedBrand === "all" ? "" : selectedBrand,
       tags: activeTags,
     });
   };
@@ -56,7 +56,7 @@ export default function ProductFilters({ brands, onFilter }: ProductFiltersProps
             <SelectValue placeholder="كل الماركات" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">كل الماركات</SelectItem>
+            <SelectItem value="all">كل الماركات</SelectItem>
             {brands.map((brand) => (
               <SelectItem key={brand.id} value={brand.id}>
                 {brand.name}
