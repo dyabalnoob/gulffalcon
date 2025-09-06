@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import logoImage from "@assets/logo الصقر الخليجي_1757177659109.png";
 
 export default function Hero() {
   return (
@@ -24,11 +25,15 @@ export default function Hero() {
         >
           {/* Brand Icon */}
           <motion.div 
-            className="mx-auto mb-6 w-40 h-40 rounded-3xl glass-card grid place-items-center text-6xl font-bold text-accent"
+            className="mx-auto mb-6 w-40 h-40 rounded-3xl glass-card overflow-hidden flex items-center justify-center"
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
-            ص
+            <img 
+              src={logoImage} 
+              alt="مؤسسة الصقر الخليجي" 
+              className="w-32 h-32 object-contain"
+            />
           </motion.div>
           
           {/* Main Heading */}
