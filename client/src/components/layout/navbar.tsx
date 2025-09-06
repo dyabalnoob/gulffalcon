@@ -1,6 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import ThemeToggle from "@/components/theme-toggle";
+import logoImage from "@assets/logo الصقر الخليجي_1757177659109.png";
 
 const navLinks = [
   { href: "/", label: "الرئيسية" },
@@ -28,8 +29,12 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             data-testid="link-logo"
           >
-            <div className="w-10 h-10 rounded-2xl bg-white/10 dark:bg-white/10 light:bg-brand-green/10 grid place-items-center text-xl font-bold text-accent">
-              ص
+            <div className="w-10 h-10 rounded-2xl bg-white/10 dark:bg-white/10 light:bg-brand-green/10 overflow-hidden flex items-center justify-center">
+              <img 
+                src={logoImage} 
+                alt="مؤسسة الصقر الخليجي" 
+                className="w-8 h-8 object-contain"
+              />
             </div>
             <span className="font-bold text-lg">الصقر الخليجي</span>
           </motion.div>
