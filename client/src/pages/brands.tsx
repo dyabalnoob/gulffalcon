@@ -17,7 +17,7 @@ export default function Brands() {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-6xl mx-auto px-6">
-        <motion.h1 
+        <motion.h1
           className="text-3xl md:text-4xl font-bold text-accent text-center mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ export default function Brands() {
           الماركات
         </motion.h1>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,11 +51,17 @@ export default function Brands() {
                       {brand.name.charAt(0)}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2" data-testid={`text-brand-name-${brand.slug}`}>
+                  <h3
+                    className="text-xl font-bold mb-2"
+                    data-testid={`text-brand-name-${brand.slug}`}
+                  >
                     {brand.name}
                   </h3>
                   {brand.description && (
-                    <p className="text-sm opacity-70" data-testid={`text-brand-description-${brand.slug}`}>
+                    <p
+                      className="text-sm opacity-70"
+                      data-testid={`text-brand-description-${brand.slug}`}
+                    >
                       {brand.description}
                     </p>
                   )}

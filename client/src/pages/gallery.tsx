@@ -46,10 +46,7 @@ export default function Gallery() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <MasonryGallery 
-            items={galleryItems} 
-            onItemClick={handleItemClick} 
-          />
+          <MasonryGallery items={galleryItems} onItemClick={handleItemClick} />
         </motion.div>
 
         {galleryItems.length === 0 && (
@@ -59,7 +56,10 @@ export default function Gallery() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-lg opacity-70" data-testid="text-no-gallery-items">
+            <p
+              className="text-lg opacity-70"
+              data-testid="text-no-gallery-items"
+            >
               لم يتم العثور على صور في المعرض
             </p>
           </motion.div>

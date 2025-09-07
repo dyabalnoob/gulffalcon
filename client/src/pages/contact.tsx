@@ -9,8 +9,21 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import type { InsertContactMessage } from "@shared/schema";
 
 export default function Contact() {
@@ -82,7 +95,10 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
                 <FormField
                   control={form.control}
                   name="name"
@@ -148,17 +164,29 @@ export default function Contact() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>الموضوع</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
                         <FormControl>
-                          <SelectTrigger className="rounded-2xl bg-input border-border" data-testid="select-contact-subject">
+                          <SelectTrigger
+                            className="rounded-2xl bg-input border-border"
+                            data-testid="select-contact-subject"
+                          >
                             <SelectValue placeholder="اختر الموضوع" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="استفسار عام">استفسار عام</SelectItem>
-                          <SelectItem value="حجز موعد للقياس">حجز موعد للقياس</SelectItem>
+                          <SelectItem value="استفسار عام">
+                            استفسار عام
+                          </SelectItem>
+                          <SelectItem value="حجز موعد للقياس">
+                            حجز موعد للقياس
+                          </SelectItem>
                           <SelectItem value="طلب مخصص">طلب مخصص</SelectItem>
-                          <SelectItem value="شكوى أو اقتراح">شكوى أو اقتراح</SelectItem>
+                          <SelectItem value="شكوى أو اقتراح">
+                            شكوى أو اقتراح
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -191,7 +219,9 @@ export default function Contact() {
                   className="w-full px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-bold hover:scale-105 transition-all"
                   data-testid="button-submit-contact"
                 >
-                  {contactMutation.isPending ? "جاري الإرسال..." : "إرسال الرسالة"}
+                  {contactMutation.isPending
+                    ? "جاري الإرسال..."
+                    : "إرسال الرسالة"}
                 </Button>
               </form>
             </Form>

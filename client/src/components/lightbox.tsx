@@ -8,7 +8,12 @@ interface LightboxProps {
   onClose: () => void;
 }
 
-export default function Lightbox({ isOpen, imageSrc, imageAlt, onClose }: LightboxProps) {
+export default function Lightbox({
+  isOpen,
+  imageSrc,
+  imageAlt,
+  onClose,
+}: LightboxProps) {
   return (
     <AnimatePresence>
       {isOpen && (

@@ -19,7 +19,7 @@ export function useIntersectionObserver({
           setIsVisible(true);
         }
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin },
     );
 
     if (ref.current) {

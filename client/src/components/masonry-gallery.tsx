@@ -7,7 +7,10 @@ interface MasonryGalleryProps {
   onItemClick: (item: GalleryItem) => void;
 }
 
-export default function MasonryGallery({ items, onItemClick }: MasonryGalleryProps) {
+export default function MasonryGallery({
+  items,
+  onItemClick,
+}: MasonryGalleryProps) {
   return (
     <div className="masonry-grid">
       {items.map((item, index) => (
@@ -28,7 +31,11 @@ interface GalleryItemComponentProps {
   onClick: () => void;
 }
 
-function GalleryItemComponent({ item, index, onClick }: GalleryItemComponentProps) {
+function GalleryItemComponent({
+  item,
+  index,
+  onClick,
+}: GalleryItemComponentProps) {
   const { ref, isVisible } = useIntersectionObserver();
 
   return (
@@ -53,7 +60,10 @@ function GalleryItemComponent({ item, index, onClick }: GalleryItemComponentProp
           loading="lazy"
         />
         <div className="p-3 text-center">
-          <h4 className="font-semibold" data-testid={`text-gallery-title-${item.id}`}>
+          <h4
+            className="font-semibold"
+            data-testid={`text-gallery-title-${item.id}`}
+          >
             {item.title}
           </h4>
         </div>
