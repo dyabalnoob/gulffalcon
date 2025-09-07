@@ -54,17 +54,17 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            مستقبل الأناقة الرجالية
+            الصقر الخليجي للتجارة
           </motion.h1>
           
           {/* Subtitle */}
           <motion.p 
-            className="mt-4 text-lg md:text-xl opacity-90 max-w-2xl mx-auto leading-relaxed"
+            className="mt-4 text-lg md:text-xl opacity-90 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            مشالح فاخرة. ثياب معدّة حسب المقاس. واجهة تعاون محلي ودولي.
+            مشالح فاخرة للنخبة… علامة تجارية سعودية بواجهة محلية وعالمية، مع شبكة جملة وقطاع فردي، ووكلاء وموزعين.
           </motion.p>
           
           {/* CTA Buttons */}
