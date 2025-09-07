@@ -60,15 +60,35 @@ export default function Home() {
     >
       <Hero />
       
-      <Section title="من نحن">
-        <motion.p 
-          className="text-lg leading-8 text-center opacity-90 max-w-3xl mx-auto"
+      <Section title="نبذة عن المؤسسة">
+        <motion.div 
+          className="text-lg leading-8 text-center opacity-90 max-w-4xl mx-auto space-y-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          جذورنا منذ 1979 — براند 1986 — مقرنا أسواق القرية الشعبية بالرياض. واجهة تعاون محلي ودولي.
-        </motion.p>
+          <p>
+            انطلقت مؤسسة الصقر الخليجي للتجارة والمقاولات من مدينة الرياض عام 1979م على يد مؤسسها عايض بن دليم فهد النوب، برؤية تجارية طموحة جمعت بين الأصالة والابتكار.
+          </p>
+          <p>
+            وفي عام 1986م، جاءت النقلة النوعية مع إطلاق براند الصقر الخليجي كهوية تجارية بارزة، جعلت من المؤسسة اسمًا راسخًا في السوق السعودي.
+          </p>
+          <p>
+            اليوم، وبعد أكثر من أربعة عقود من العمل والإنجاز، تتمركز إدارة المؤسسة ومقرها الرئيسي في أسواق القرية الشعبية بالرياض، حيث تمتلك مركزًا تجاريًا كبيرًا بفتحات متعددة يخدم جميع سكان منطقة الرياض والمناطق المجاورة.
+          </p>
+          <motion.div 
+            className="mt-8"
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <a 
+              href="/about" 
+              className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-2xl font-semibold hover:scale-105 transition-all"
+            >
+              اقرأ المزيد
+            </a>
+          </motion.div>
+        </motion.div>
       </Section>
 
       <BrandMarquee />
