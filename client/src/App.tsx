@@ -13,6 +13,10 @@ import Products from "@/pages/products";
 import Brands from "@/pages/brands";
 import Gallery from "@/pages/gallery";
 import Contact from "@/pages/contact";
+import About from "@/pages/about";
+import Responsibility from "@/pages/responsibility";
+import Future from "@/pages/future";
+import CEO from "@/pages/ceo";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -24,6 +28,10 @@ function Router() {
         <Route path="/brands" component={Brands} />
         <Route path="/gallery" component={Gallery} />
         <Route path="/contact" component={Contact} />
+        <Route path="/about" component={About} />
+        <Route path="/responsibility" component={Responsibility} />
+        <Route path="/future" component={Future} />
+        <Route path="/ceo" component={CEO} />
         <Route component={NotFound} />
       </Switch>
     </AnimatePresence>

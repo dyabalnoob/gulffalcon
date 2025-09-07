@@ -5,6 +5,7 @@ import logoImage from "@assets/logo الصقر الخليجي_1757177659109.png"
 
 const navLinks = [
   { href: "/", label: "الرئيسية" },
+  { href: "/about", label: "من نحن" },
   { href: "/products", label: "المنتجات" },
   { href: "/brands", label: "الماركات" },
   { href: "/gallery", label: "المعرض" },
