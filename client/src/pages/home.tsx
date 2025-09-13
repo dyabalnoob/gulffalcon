@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import Hero from "@/components/hero";
-import BrandMarquee from "@/components/brand-marquee";
+import PartnersMarquee from "@/components/partners-marquee";
 import ProductCard from "@/components/product-card";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { useLanguage } from "@/contexts/language-context";
@@ -93,7 +93,7 @@ export default function Home() {
         </motion.div>
       </Section>
 
-      <BrandMarquee />
+      <PartnersMarquee />
 
       <Section title={t.products.featured} tone="muted">
         <div className="grid md:grid-cols-3 gap-6">
