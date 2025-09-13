@@ -48,15 +48,15 @@ export default function Brands() {
                 >
                   <div className="mb-4">
                     <div className="w-20 h-20 mx-auto rounded-2xl glass-card flex items-center justify-center text-2xl font-bold text-accent">
-                      {brand.name.charAt(0)}
+                      {brand.nameAr?.charAt(0) || brand.nameEn?.charAt(0) || '؟'}
                     </div>
                   </div>
                   <h3 className="text-xl font-bold mb-2" data-testid={`text-brand-name-${brand.slug}`}>
-                    {brand.name}
+                    {brand.nameAr || brand.nameEn}
                   </h3>
-                  {brand.description && (
+                  {(brand.descriptionAr || brand.descriptionEn) && (
                     <p className="text-sm opacity-70" data-testid={`text-brand-description-${brand.slug}`}>
-                      {brand.description}
+                      {brand.descriptionAr || brand.descriptionEn}
                     </p>
                   )}
                 </motion.div>
