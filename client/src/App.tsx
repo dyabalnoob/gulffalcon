@@ -12,6 +12,7 @@ import WhatsAppFloat from "@/components/whatsapp-float";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Products from "@/pages/products";
+import ProductDetail from "@/pages/product-detail";
 import Brands from "@/pages/brands";
 import Gallery from "@/pages/gallery";
 import Contact from "@/pages/contact";
@@ -24,6 +25,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/products" component={Products} />
+        <Route path="/product/:slug" component={ProductDetail} />
         <Route path="/brands" component={Brands} />
         <Route path="/gallery" component={Gallery} />
         <Route path="/contact" component={Contact} />
