@@ -10,13 +10,13 @@ interface ProductCardProps {
 export default function ProductCard({ product, brand, onClick }: ProductCardProps) {
   return (
     <motion.button
-      className="glass-card luxury-border p-6 rounded-2xl hover:shadow-2xl transition-all duration-500 text-right w-full group"
+      className="glass-card professional-border p-5 rounded-xl hover:shadow-xl transition-all duration-300 text-right w-full group"
       whileHover={{ y: -8, scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
       onClick={() => onClick?.(product)}
       data-testid={`card-product-${product.id}`}
     >
-      <div className="relative w-full h-72 rounded-xl overflow-hidden mb-6 luxury-border">
+      <div className="relative w-full h-64 rounded-lg overflow-hidden mb-4 professional-border">
         <img 
           src={product.imageUrl} 
           alt={product.title}
@@ -28,7 +28,7 @@ export default function ProductCard({ product, brand, onClick }: ProductCardProp
           {product.title}
         </h3>
         {brand && (
-          <p className="text-sm opacity-80 mb-3 text-yellow-500" data-testid={`text-product-brand-${product.id}`}>
+          <p className="text-sm opacity-80 mb-3 text-secondary" data-testid={`text-product-brand-${product.id}`}>
             {brand.name}
           </p>
         )}
@@ -37,7 +37,7 @@ export default function ProductCard({ product, brand, onClick }: ProductCardProp
             {product.tags.map((tag, index) => (
               <span 
                 key={index}
-                className="px-3 py-1 text-xs bg-gradient-to-r from-yellow-400/20 to-amber-600/20 text-yellow-400 rounded-lg font-medium"
+                className="px-3 py-1 text-xs bg-gradient-to-r from-green-500/15 to-teal-600/15 text-primary rounded-lg font-medium"
                 data-testid={`tag-product-${product.id}-${index}`}
               >
                 {tag}

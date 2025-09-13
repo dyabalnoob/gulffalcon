@@ -36,7 +36,7 @@ export default function Hero() {
         >
           {/* Brand Icon */}
           <motion.div 
-            className="mx-auto mb-6 w-40 h-40 rounded-3xl glass-card luxury-border luxury-glow overflow-hidden flex items-center justify-center"
+            className="mx-auto mb-6 w-40 h-40 rounded-xl glass-card professional-border overflow-hidden flex items-center justify-center"
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -49,7 +49,7 @@ export default function Hero() {
           
           {/* Main Heading */}
           <motion.h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 text-gradient luxury-text-shadow"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-gradient professional-text-shadow"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -76,7 +76,7 @@ export default function Hero() {
           >
             <Button 
               asChild
-              className="px-10 py-5 rounded-2xl bg-primary text-primary-foreground font-bold hover:scale-105 transition-all shadow-lg luxury-glow text-lg"
+              className="px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold hover:scale-105 transition-all shadow-lg text-base"
               data-testid="button-hero-catalog"
             >
               <a href="/products">استعرض الكتالوج</a>
@@ -84,7 +84,7 @@ export default function Hero() {
             <Button 
               asChild
               variant="ghost"
-              className="px-10 py-5 rounded-2xl glass-card luxury-border font-bold hover:scale-105 transition-all text-lg"
+              className="px-8 py-4 rounded-xl glass-card professional-border font-semibold hover:scale-105 transition-all text-base"
               data-testid="button-hero-contact"
             >
               <a href="/contact">تواصل معنا</a>
@@ -95,12 +95,12 @@ export default function Hero() {
       
       {/* Decorative Blurs */}
       <motion.div 
-        className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gradient-to-r from-yellow-400/30 to-amber-600/30 blur-3xl"
+        className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gradient-to-r from-green-500/20 to-teal-600/20 blur-3xl"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div 
-        className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-r from-purple-600/20 to-indigo-800/20 blur-3xl"
+        className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-r from-green-600/15 to-emerald-700/15 blur-3xl"
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
