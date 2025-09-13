@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, jsonb, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, jsonb, timestamp, boolean, integer, decimal } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -11,21 +11,43 @@ export const users = pgTable("users", {
 
 export const brands = pgTable("brands", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  name: text("name").notNull(),
+  nameAr: text("name_ar").notNull(),
+  nameEn: text("name_en").notNull(),
   slug: text("slug").notNull().unique(),
-  description: text("description"),
+  descriptionAr: text("description_ar"),
+  descriptionEn: text("description_en"),
   logoUrl: text("logo_url"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const products = pgTable("products", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  title: text("title").notNull(),
-  description: text("description"),
-  imageUrl: text("image_url").notNull(),
+  nameAr: text("name_ar").notNull(),
+  nameEn: text("name_en").notNull(),
+  slug: text("slug").notNull().unique(),
+  descriptionAr: text("description_ar"),
+  descriptionEn: text("description_en"),
+  price: decimal("price", { precision: 10, scale: 2 }).notNull(),
+  salePrice: decimal("sale_price", { precision: 10, scale: 2 }),
+  mainImage: text("main_image").notNull(),
+  images: jsonb("images").$type<string[]>().default([]),
   brandId: varchar("brand_id").references(() => brands.id),
+  category: text("category").notNull(),
+  subcategory: text("subcategory"),
   tags: jsonb("tags").$type<string[]>().default([]),
+  sizes: jsonb("sizes").$type<string[]>().default([]),
+  colors: jsonb("colors").$type<{ nameAr: string; nameEn: string; hex: string }[]>().default([]),
+  materialAr: text("material_ar"),
+  materialEn: text("material_en"),
+  featured: boolean("featured").default(false),
+  isNew: boolean("is_new").default(false),
+  isCustomizable: boolean("is_customizable").default(false),
+  stock: integer("stock").default(0),
+  sku: text("sku").unique(),
+  metaTitle: text("meta_title"),
+  metaDescription: text("meta_description"),
   createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 export const galleryItems = pgTable("gallery_items", {
@@ -59,6 +81,7 @@ export const insertBrandSchema = createInsertSchema(brands).omit({
 export const insertProductSchema = createInsertSchema(products).omit({
   id: true,
   createdAt: true,
+  updatedAt: true,
 });
 
 export const insertGalleryItemSchema = createInsertSchema(galleryItems).omit({

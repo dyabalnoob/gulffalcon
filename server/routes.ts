@@ -29,10 +29,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Products API
   app.get("/api/products", async (req, res) => {
     try {
+      const { category, featured } = req.query;
+      
+      if (category) {
+        const products = await storage.getProductsByCategory(category as string);
+        return res.json(products);
+      }
+      
+      if (featured === 'true') {
+        const products = await storage.getFeaturedProducts();
+        return res.json(products);
+      }
+      
       const products = await storage.getProducts();
       res.json(products);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch products" });
+    }
+  });
+
+  app.get("/api/products/featured", async (req, res) => {
+    try {
+      const products = await storage.getFeaturedProducts();
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch featured products" });
+    }
+  });
+
+  app.get("/api/products/category/:category", async (req, res) => {
+    try {
+      const products = await storage.getProductsByCategory(req.params.category);
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch products by category" });
     }
   });
 
@@ -42,6 +72,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(products);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch products for brand" });
+    }
+  });
+
+  app.get("/api/products/:slug", async (req, res) => {
+    try {
+      const product = await storage.getProductBySlug(req.params.slug);
+      if (!product) {
+        return res.status(404).json({ error: "Product not found" });
+      }
+      res.json(product);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch product" });
     }
   });
 
