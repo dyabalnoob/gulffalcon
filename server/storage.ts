@@ -324,6 +324,170 @@ export class MemStorage implements IStorage {
         isNew: false,
         isCustomizable: true,
         sku: "VEST-CA-005"
+      },
+      // Prayer Beads Products
+      {
+        nameAr: "مسبحة السمك الذهبي الفاخرة",
+        nameEn: "Luxury Golden Fish Prayer Beads",
+        slug: "luxury-golden-fish-prayer-beads",
+        descriptionAr: "مسبحة فاخرة بتصميم السمك الذهبي، مصنوعة من أجود المواد الطبيعية مع تفاصيل ذهبية راقية",
+        descriptionEn: "Luxury prayer beads with golden fish design, made from finest natural materials with elegant golden details",
+        price: "850.00",
+        salePrice: "720.00",
+        mainImage: "/images/products/prayer-beads/amber-fish-style.jpg",
+        images: [
+          "/images/products/prayer-beads/black-gold-fish-style.jpg"
+        ],
+        category: "prayer-beads",
+        subcategory: "luxury",
+        brandId: brandIds[0],
+        tags: ["مسبحة", "ذهبي", "فاخر", "تحفة فنية"],
+        sizes: [],
+        colors: [
+          { nameAr: "ذهبي عنبري", nameEn: "Amber Gold", hex: "#D4A574" },
+          { nameAr: "أسود ذهبي", nameEn: "Black Gold", hex: "#1a1a1a" }
+        ],
+        materialAr: "خشب طبيعي مع طلاء ذهبي",
+        materialEn: "Natural wood with golden coating",
+        stock: 8,
+        featured: true,
+        isNew: true,
+        isCustomizable: false,
+        sku: "PB-LUX-001"
+      },
+      {
+        nameAr: "مسبحة العقيق الأحمر التراثية",
+        nameEn: "Traditional Red Agate Prayer Beads",
+        slug: "traditional-red-agate-prayer-beads",
+        descriptionAr: "مسبحة تراثية من العقيق الأحمر الطبيعي مع زخارف دائرية أصيلة وذيل حريري فاخر",
+        descriptionEn: "Traditional prayer beads made from natural red agate with authentic circular patterns and luxurious silk tassel",
+        price: "1200.00",
+        mainImage: "/images/products/prayer-beads/red-wood-circular.jpg",
+        images: [
+          "/images/products/prayer-beads/red-brown-traditional.jpg"
+        ],
+        category: "prayer-beads",
+        subcategory: "traditional",
+        brandId: brandIds[1],
+        tags: ["مسبحة", "عقيق", "تراثي", "أحمر"],
+        sizes: [],
+        colors: [
+          { nameAr: "أحمر عقيق", nameEn: "Agate Red", hex: "#8B0000" },
+          { nameAr: "بني محمر", nameEn: "Reddish Brown", hex: "#A0522D" }
+        ],
+        materialAr: "عقيق أحمر طبيعي",
+        materialEn: "Natural red agate",
+        stock: 12,
+        featured: true,
+        isNew: false,
+        isCustomizable: false,
+        sku: "PB-AGT-002"
+      },
+      {
+        nameAr: "مسبحة الفيروز الفاخرة",
+        nameEn: "Luxury Turquoise Prayer Beads",
+        slug: "luxury-turquoise-prayer-beads",
+        descriptionAr: "مسبحة من حجر الفيروز الطبيعي الفاخر، تتميز بلونها الأزرق المميز مع زخارف فضية راقية",
+        descriptionEn: "Prayer beads made from luxury natural turquoise stone, featuring distinctive blue color with elegant silver decorations",
+        price: "950.00",
+        mainImage: "/images/products/prayer-beads/turquoise-cylindrical.jpg",
+        images: [],
+        category: "prayer-beads",
+        subcategory: "luxury",
+        brandId: brandIds[2],
+        tags: ["مسبحة", "فيروز", "طبيعي", "أزرق"],
+        sizes: [],
+        colors: [
+          { nameAr: "فيروزي", nameEn: "Turquoise", hex: "#40E0D0" }
+        ],
+        materialAr: "فيروز طبيعي",
+        materialEn: "Natural turquoise",
+        stock: 6,
+        featured: false,
+        isNew: false,
+        isCustomizable: false,
+        sku: "PB-TUR-003"
+      },
+      {
+        nameAr: "مسبحة اللازورد الملكية",
+        nameEn: "Royal Lapis Lazuli Prayer Beads",
+        slug: "royal-lapis-lazuli-prayer-beads",
+        descriptionAr: "مسبحة ملكية من حجر اللازورد الأزرق الطبيعي مع تفاصيل معدنية فضية وزخارف تقليدية",
+        descriptionEn: "Royal prayer beads made from natural blue lapis lazuli stone with silver metallic details and traditional decorations",
+        price: "1400.00",
+        mainImage: "/images/products/prayer-beads/blue-round-beads.jpg",
+        images: [],
+        category: "prayer-beads",
+        subcategory: "royal",
+        brandId: brandIds[0],
+        tags: ["مسبحة", "لازورد", "ملكي", "نادر"],
+        sizes: [],
+        colors: [
+          { nameAr: "أزرق لازورد", nameEn: "Lapis Blue", hex: "#26619C" }
+        ],
+        materialAr: "لازورد طبيعي",
+        materialEn: "Natural lapis lazuli",
+        stock: 4,
+        featured: true,
+        isNew: false,
+        isCustomizable: false,
+        sku: "PB-LAP-004"
+      },
+      {
+        nameAr: "مسبحة الأوبال الأسود الفاخرة",
+        nameEn: "Luxury Black Opal Prayer Beads",
+        slug: "luxury-black-opal-prayer-beads",
+        descriptionAr: "مسبحة فاخرة من الأوبال الأسود النادر مع زخارف ذهبية معقدة وذيل حريري أسود",
+        descriptionEn: "Luxury prayer beads made from rare black opal with intricate golden decorations and black silk tassel",
+        price: "2200.00",
+        salePrice: "1850.00",
+        mainImage: "/images/products/prayer-beads/black-gold-beads.jpg",
+        images: [
+          "/images/products/prayer-beads/black-gold-fish-style.jpg"
+        ],
+        category: "prayer-beads",
+        subcategory: "luxury",
+        brandId: brandIds[3],
+        tags: ["مسبحة", "أوبال", "أسود", "نادر", "فاخر"],
+        sizes: [],
+        colors: [
+          { nameAr: "أسود أوبال", nameEn: "Opal Black", hex: "#0C0C0C" }
+        ],
+        materialAr: "أوبال أسود طبيعي",
+        materialEn: "Natural black opal",
+        stock: 3,
+        featured: true,
+        isNew: true,
+        isCustomizable: false,
+        sku: "PB-OPL-005"
+      },
+      {
+        nameAr: "مجموعة مسابح ملونة تقليدية",
+        nameEn: "Traditional Colorful Prayer Beads Collection",
+        slug: "traditional-colorful-prayer-beads-collection",
+        descriptionAr: "مجموعة رائعة من المسابح التقليدية بألوان متنوعة، تشمل الأسود والأصفر والأحمر والأزرق مع ذيول حريرية",
+        descriptionEn: "Beautiful collection of traditional prayer beads in various colors, including black, yellow, red, and blue with silk tassels",
+        price: "650.00",
+        mainImage: "/images/products/prayer-beads/mixed-colors-collection.jpg",
+        images: [],
+        category: "prayer-beads",
+        subcategory: "traditional",
+        brandId: brandIds[4],
+        tags: ["مسبحة", "مجموعة", "ملون", "تقليدي"],
+        sizes: [],
+        colors: [
+          { nameAr: "أسود", nameEn: "Black", hex: "#000000" },
+          { nameAr: "أصفر", nameEn: "Yellow", hex: "#FFD700" },
+          { nameAr: "أحمر", nameEn: "Red", hex: "#DC143C" },
+          { nameAr: "أزرق", nameEn: "Blue", hex: "#4169E1" }
+        ],
+        materialAr: "خشب وأحجار طبيعية متنوعة",
+        materialEn: "Wood and various natural stones",
+        stock: 20,
+        featured: false,
+        isNew: false,
+        isCustomizable: true,
+        sku: "PB-COL-006"
       }
     ];
 
