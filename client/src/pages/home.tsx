@@ -4,6 +4,7 @@ import Hero from "@/components/hero";
 import BrandMarquee from "@/components/brand-marquee";
 import ProductCard from "@/components/product-card";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useLanguage } from "@/contexts/language-context";
 import type { Product, Brand } from "@shared/schema";
 
 function Section({ 
@@ -41,6 +42,7 @@ function Section({
 }
 
 export default function Home() {
+  const { t } = useLanguage();
   const { data: products = [] } = useQuery<Product[]>({
     queryKey: ["/api/products"],
   });
@@ -60,22 +62,16 @@ export default function Home() {
     >
       <Hero />
       
-      <Section title="نبذة عن المؤسسة">
+      <Section title={t.about.title}>
         <motion.div 
           className="text-lg leading-8 text-center opacity-90 max-w-4xl mx-auto space-y-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p>
-            انطلقت مؤسسة الصقر الخليجي للتجارة من مدينة الرياض عام 1979م على يد مؤسسها عايض بن دليم فهد النوب، برؤية تجارية طموحة جمعت بين الأصالة والابتكار.
-          </p>
-          <p>
-            وفي عام 1986م، جاءت النقلة النوعية مع إطلاق براند الصقر الخليجي كهوية تجارية بارزة، جعلت من المؤسسة اسمًا راسخًا في السوق السعودي.
-          </p>
-          <p>
-            اليوم، وبعد أكثر من أربعة عقود من العمل والإنجاز، تتمركز إدارة المؤسسة ومقرها الرئيسي في أسواق القرية الشعبية بالرياض، حيث تمتلك مركزًا تجاريًا كبيرًا بفتحات متعددة يخدم جميع سكان منطقة الرياض والمناطق المجاورة.
-          </p>
+          <p>{t.about.paragraph1}</p>
+          <p>{t.about.paragraph2}</p>
+          <p>{t.about.paragraph3}</p>
           <motion.div 
             className="mt-8"
             whileInView={{ opacity: 1, y: 0 }}
@@ -85,7 +81,7 @@ export default function Home() {
               href="/about" 
               className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-2xl font-semibold hover:scale-105 transition-all"
             >
-              اقرأ المزيد
+              {t.about.readMore}
             </a>
           </motion.div>
         </motion.div>
@@ -93,7 +89,7 @@ export default function Home() {
 
       <BrandMarquee />
 
-      <Section title="مختارات" tone="muted">
+      <Section title={t.products.featured} tone="muted">
         <div className="grid md:grid-cols-3 gap-6">
           {featuredProducts.map((product, index) => {
             const brand = brands.find(b => b.id === product.brandId);

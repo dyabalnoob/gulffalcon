@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/language-context";
 import logoImage from "@assets/logo الصقر الخليجي_1757177659109.png";
 import heroVideo from "@assets/فيديو الخلفيه الصقر الخليجي  _1757181776177.mp4";
 
 export default function Hero() {
+  const { t } = useLanguage();
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center brand-gradient">
       {/* Video Background */}
@@ -54,7 +56,7 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            الصقر الخليجي للتجارة
+            {t.hero.title}
           </motion.h1>
           
           {/* Subtitle */}
@@ -64,7 +66,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            مشالح فاخرة للنخبة… علامة تجارية سعودية بواجهة محلية وعالمية، مع شبكة جملة وقطاع فردي، ووكلاء وموزعين.
+            {t.hero.subtitle}
           </motion.p>
           
           {/* CTA Buttons */}
@@ -79,7 +81,7 @@ export default function Hero() {
               className="px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold hover:scale-105 transition-all shadow-lg text-base"
               data-testid="button-hero-catalog"
             >
-              <a href="/products">استعرض الكتالوج</a>
+              <a href="/products">{t.hero.ctaCatalog}</a>
             </Button>
             <Button 
               asChild
@@ -87,7 +89,7 @@ export default function Hero() {
               className="px-8 py-4 rounded-xl glass-card professional-border font-semibold hover:scale-105 transition-all text-base"
               data-testid="button-hero-contact"
             >
-              <a href="/contact">تواصل معنا</a>
+              <a href="/contact">{t.hero.ctaContact}</a>
             </Button>
           </motion.div>
         </motion.div>

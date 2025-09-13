@@ -32,7 +32,7 @@ export default function CEO() {
         >
           <div className="glass-card p-8 rounded-3xl mb-8">
             <p className="text-lg leading-relaxed mb-6">
-              يشغل ذياب عايض النوب منصب المدير التنفيذي لمؤسسة الصقر الخليجي للتجارة والمقاولات، ويعد الامتداد الطبيعي لمسيرة المؤسس عايض بن دليم النوب، جامعًا بين إرث الخبرة الطويلة للمؤسسة ورؤية عصرية حديثة في الإدارة والتطوير.
+              يشغل ذياب عايض النوب منصب المدير التنفيذي لمؤسسة الصقر الخليجي للتجارة والأزياء الفاخرة، ويعد الامتداد الطبيعي لمسيرة المؤسس عايض بن دليم النوب، جامعًا بين إرث الخبرة الطويلة في عالم الأزياء ورؤية عصرية حديثة في إدارة قطاع الموضة.
             </p>
 
             <h3 className="text-2xl font-bold mb-6 text-accent">نهجه القيادي</h3>
@@ -40,12 +40,12 @@ export default function CEO() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="bg-primary/10 p-6 rounded-2xl">
                 <h4 className="text-lg font-bold mb-3 text-accent">التطوير المؤسسي</h4>
-                <p className="leading-relaxed">إعادة هيكلة العمليات التجارية لتواكب متطلبات السوق المتغيرة</p>
+                <p className="leading-relaxed">إعادة هيكلة عمليات تجارة الأزياء لتواكب متطلبات عالم الموضة المتغيرة</p>
               </div>
 
               <div className="bg-primary/10 p-6 rounded-2xl">
                 <h4 className="text-lg font-bold mb-3 text-accent">التحول الرقمي</h4>
-                <p className="leading-relaxed">إدخال أنظمة تقنية حديثة في المبيعات والإدارة وربط الفروع والمراكز التجارية بنظم متكاملة</p>
+                <p className="leading-relaxed">إدخال أنظمة تقنية حديثة في إدارة معارض الأزياء وربط الفروع ومراكز الموضة بنظم متكاملة</p>
               </div>
 
               <div className="bg-primary/10 p-6 rounded-2xl">
@@ -68,26 +68,26 @@ export default function CEO() {
             <h3 className="text-2xl font-bold mb-6 text-accent">رؤية المدير التنفيذي للمستقبل</h3>
             
             <p className="text-lg leading-relaxed mb-6">
-              يرى ذياب عايض النوب أن نجاح مؤسسة الصقر الخليجي للتجارة والمقاولات يكمن في الجمع بين جذور الماضي وتطلعات المستقبل. فالمؤسسة التي انطلقت من متجر صغير في الرياض أصبحت اليوم علامة تجارية عريقة، لكنها مطالبة دائمًا بمواكبة التغيرات وتلبية حاجات الأجيال الجديدة.
+              يرى ذياب عايض النوب أن نجاح مؤسسة الصقر الخليجي للتجارة والأزياء يكمن في الجمع بين جذور الماضي وتطلعات المستقبل. فالمؤسسة التي انطلقت من متجر صغير للأزياء في الرياض أصبحت اليوم علامة رائدة في عالم الموضة الرجالية، لكنها مطالبة دائمًا بمواكبة التغيرات وتلبية حاجات عشاق الأناقة في الأجيال الجديدة.
             </p>
 
             <div className="space-y-6">
               <div className="bg-accent/10 p-6 rounded-2xl">
                 <h4 className="text-lg font-bold mb-3 text-accent">التحول إلى براند وطني منافس</h4>
                 <p className="leading-relaxed mb-2">• تطوير هوية الصقر الخليجي لتكون أكثر حضورًا في السوق السعودي والخليجي</p>
-                <p className="leading-relaxed">• الانتقال من مجرد مؤسسة تجارة تقليدية إلى براند متكامل له قيمة ورمزية في أذهان العملاء</p>
+                <p className="leading-relaxed">• الانتقال من مجرد متجر أزياء تقليدي إلى براند عالمي للموضة الرجالية له قيمة ورمزية في أذهان العملاء</p>
               </div>
 
               <div className="bg-accent/10 p-6 rounded-2xl">
                 <h4 className="text-lg font-bold mb-3 text-accent">التوسع في قطاع الأزياء والزي الوطني</h4>
-                <p className="leading-relaxed mb-2">• إطلاق خطوط إنتاج متخصصة في الثياب، المشالح، الشماغ، والإكسسوارات الرجالية</p>
+                <p className="leading-relaxed mb-2">• إطلاق خطوط إنتاج متخصصة في الثياب الفاخرة، المشالح، الشماغ، والإكسسوارات الرجالية الراقية</p>
                 <p className="leading-relaxed">• الجمع بين الأصالة السعودية والتصاميم الحديثة لجذب الأجيال الجديدة والمحافظة على روح التراث</p>
               </div>
 
               <div className="bg-accent/10 p-6 rounded-2xl">
                 <h4 className="text-lg font-bold mb-3 text-accent">الرقمنة والتجارة الإلكترونية</h4>
                 <p className="leading-relaxed mb-2">• بناء متاجر إلكترونية ذكية للوصول إلى العملاء داخل المملكة وخارجها</p>
-                <p className="leading-relaxed">• الاعتماد على الأنظمة الحديثة لإدارة المخزون، خدمة العملاء، والدفع الإلكتروني</p>
+                <p className="leading-relaxed">• الاعتماد على الأنظمة الحديثة لإدارة مخزون الأزياء، خدمة العملاء، والدفع الإلكتروني</p>
               </div>
 
               <div className="bg-accent/10 p-6 rounded-2xl">
@@ -98,7 +98,7 @@ export default function CEO() {
 
               <div className="bg-accent/10 p-6 rounded-2xl">
                 <h4 className="text-lg font-bold mb-3 text-accent">بناء الجيل القادم</h4>
-                <p className="leading-relaxed mb-2">• الاستثمار في الكفاءات الشابة وتدريبهم على أسس التجارة الحديثة</p>
+                <p className="leading-relaxed mb-2">• الاستثمار في الكفاءات الشابة وتدريبهم على أسس تجارة الأزياء الحديثة واتجاهات الموضة</p>
                 <p className="leading-relaxed">• جعل المؤسسة بيئة عمل رائدة في تمكين الشباب السعودي</p>
               </div>
             </div>

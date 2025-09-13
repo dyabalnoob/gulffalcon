@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { TrendingUp, Shirt, Tag } from "lucide-react";
 
 export default function Future() {
   return (
@@ -32,7 +33,7 @@ export default function Future() {
         >
           <div className="glass-card p-8 rounded-3xl mb-8">
             <p className="text-lg leading-relaxed mb-6">
-              انطلاقًا من خبرتها الطويلة في عالم التجارة، تتطلع مؤسسة الصقر الخليجي للتجارة والمقاولات إلى مرحلة جديدة من النمو والتوسع عبر الدخول في قطاع الملابس الرجالية والزي الوطني.
+              انطلاقًا من خبرتها الطويلة في عالم الأزياء والتجارة، تتطلع مؤسسة الصقر الخليجي للتجارة والأزياء الفاخرة إلى مرحلة جديدة من النمو والتوسع عبر التعمق في قطاع الملابس الرجالية الفاخرة والزي الوطني الراقي.
             </p>
 
             <p className="text-lg leading-relaxed mb-6">
@@ -41,19 +42,25 @@ export default function Future() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-accent/10 p-6 rounded-2xl text-center">
-                <div className="text-4xl mb-4">📈</div>
+                <div className="flex justify-center mb-4">
+                  <TrendingUp className="w-12 h-12 text-accent" />
+                </div>
                 <h3 className="text-lg font-bold mb-3 text-accent">الطلب المتزايد</h3>
                 <p className="text-sm leading-relaxed">تزايد الطلب على الأزياء الرجالية ذات الجودة العالية</p>
               </div>
 
               <div className="bg-accent/10 p-6 rounded-2xl text-center">
-                <div className="text-4xl mb-4">👔</div>
+                <div className="flex justify-center mb-4">
+                  <Shirt className="w-12 h-12 text-accent" />
+                </div>
                 <h3 className="text-lg font-bold mb-3 text-accent">الزي الوطني</h3>
                 <p className="text-sm leading-relaxed">استمرار المكانة الخاصة للزي الوطني السعودي كرمز للهوية والفخر</p>
               </div>
 
               <div className="bg-accent/10 p-6 rounded-2xl text-center">
-                <div className="text-4xl mb-4">🏷️</div>
+                <div className="flex justify-center mb-4">
+                  <Tag className="w-12 h-12 text-accent" />
+                </div>
                 <h3 className="text-lg font-bold mb-3 text-accent">علامة تجارية متكاملة</h3>
                 <p className="text-sm leading-relaxed">الحاجة لعلامة تجارية تجمع بين الأصالة السعودية والتطوير العصري</p>
               </div>
@@ -96,7 +103,7 @@ export default function Future() {
             </div>
 
             <p className="text-lg leading-relaxed">
-              بهذا الطموح، تسعى الصقر الخليجي لأن تكون أكثر من مجرد مؤسسة تجارية تقليدية، بل بيت خبرة ووجهة وطنية في مجال الأزياء الرجالية، مساهمة في تعزيز الهوية السعودية ومواكبة التطور في عالم الموضة والأسواق.
+              بهذا الطموح، تسعى الصقر الخليجي لأن تكون رائدة في عالم الأزياء الفاخرة، بل بيت خبرة عريق ووجهة وطنية رائدة في مجال الأزياء الرجالية الراقية، مساهمة في تعزيز الهوية السعودية وريادة التطور في عالم الموضة العالمية.
             </p>
           </div>
 

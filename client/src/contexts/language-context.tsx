@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'ar' | 'en';
 
@@ -205,7 +205,22 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('ar');
+  // Initialize language from localStorage or default to 'ar'
+  const [language, setLanguageState] = useState<Language>(() => {
+    const savedLang = localStorage.getItem('language');
+    return (savedLang === 'en' || savedLang === 'ar') ? savedLang : 'ar';
+  });
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    localStorage.setItem('language', lang);
+  };
+
+  // Update document direction when language changes
+  useEffect(() => {
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = language;
+  }, [language]);
 
   const value: LanguageContextType = {
     language,
@@ -216,9 +231,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   return (
     <LanguageContext.Provider value={value}>
-      <div dir={value.isRTL ? 'rtl' : 'ltr'}>
-        {children}
-      </div>
+      {children}
     </LanguageContext.Provider>
   );
 }

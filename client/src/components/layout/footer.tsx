@@ -24,7 +24,7 @@ export default function Footer() {
                   className="w-10 h-10 object-contain"
                 />
               </div>
-              <span className="text-2xl font-bold text-gradient">مؤسسة الصقر الخليجي</span>
+              <span className="text-2xl font-bold text-gradient">{t.hero.title}</span>
             </div>
             <p className="opacity-90 mb-6 max-w-md text-lg font-light">
               {t.footer.description}
@@ -53,11 +53,11 @@ export default function Footer() {
           >
             <h4 className="font-bold mb-4 text-primary text-lg">{t.footer.quickLinks}</h4>
             <ul className="space-y-2">
-              <li><a href="/" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-home">الرئيسية</a></li>
-              <li><a href="/products" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-products">المنتجات</a></li>
-              <li><a href="/brands" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-brands">الماركات</a></li>
-              <li><a href="/gallery" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-gallery">المعرض</a></li>
-              <li><a href="/contact" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-contact">تواصل معنا</a></li>
+              <li><a href="/" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-home">{t.nav.home}</a></li>
+              <li><a href="/products" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-products">{t.nav.products}</a></li>
+              <li><a href="/brands" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-brands">{t.nav.brands}</a></li>
+              <li><a href="/gallery" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-gallery">{t.nav.gallery}</a></li>
+              <li><a href="/contact" className="opacity-80 hover:opacity-100 transition-opacity" data-testid="link-footer-contact">{t.nav.contact}</a></li>
             </ul>
           </motion.div>
           
@@ -69,11 +69,11 @@ export default function Footer() {
           >
             <h4 className="font-bold mb-4 text-primary text-lg">{t.footer.services}</h4>
             <ul className="space-y-2">
-              <li className="opacity-80">قياس مخصص</li>
-              <li className="opacity-80">تصميم حسب الطلب</li>
-              <li className="opacity-80">خدمة التوصيل</li>
-              <li className="opacity-80">استشارة أزياء</li>
-              <li className="opacity-80">خدمة ما بعد البيع</li>
+              <li className="opacity-80">{t.footer.customMeasurement}</li>
+              <li className="opacity-80">{t.footer.customDesign}</li>
+              <li className="opacity-80">{t.footer.delivery}</li>
+              <li className="opacity-80">{t.footer.fashionConsulting}</li>
+              <li className="opacity-80">{t.footer.afterSales}</li>
             </ul>
           </motion.div>
         </div>

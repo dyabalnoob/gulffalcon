@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -135,6 +136,7 @@ export default function Contact() {
                           className="rounded-2xl bg-input border-border"
                           data-testid="input-contact-phone"
                           {...field}
+                          value={field.value || ''}
                         />
                       </FormControl>
                       <FormMessage />
@@ -207,8 +209,8 @@ export default function Contact() {
             {/* Address */}
             <div className="glass-card p-6 rounded-3xl">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/20 grid place-items-center text-primary text-xl">
-                  📍
+                <div className="w-12 h-12 rounded-xl bg-primary/20 grid place-items-center text-primary">
+                  <MapPin className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">العنوان</h3>
@@ -222,8 +224,8 @@ export default function Contact() {
             {/* Phone */}
             <div className="glass-card p-6 rounded-3xl">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/20 grid place-items-center text-primary text-xl">
-                  📞
+                <div className="w-12 h-12 rounded-xl bg-primary/20 grid place-items-center text-primary">
+                  <Phone className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">الهاتف</h3>
@@ -235,8 +237,8 @@ export default function Contact() {
             {/* Email */}
             <div className="glass-card p-6 rounded-3xl">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/20 grid place-items-center text-primary text-xl">
-                  ✉️
+                <div className="w-12 h-12 rounded-xl bg-primary/20 grid place-items-center text-primary">
+                  <Mail className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">البريد الإلكتروني</h3>
@@ -248,8 +250,8 @@ export default function Contact() {
             {/* Working Hours */}
             <div className="glass-card p-6 rounded-3xl">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/20 grid place-items-center text-primary text-xl">
-                  🕐
+                <div className="w-12 h-12 rounded-xl bg-primary/20 grid place-items-center text-primary">
+                  <Clock className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">ساعات العمل</h3>
