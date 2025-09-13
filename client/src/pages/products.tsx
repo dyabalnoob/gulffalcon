@@ -98,7 +98,7 @@ export default function Products() {
     }
 
     return filtered;
-  }, [products, searchQuery, selectedBrand, sortBy, isRTL]);
+  }, [products, selectedCategory, searchQuery, selectedBrand, sortBy, isRTL]);
 
   const toggleWishlist = (productId: string) => {
     setWishlist(prev => 
