@@ -1,6 +1,13 @@
 # Overview
 
-This is a modern full-stack web application for a men's fashion company called "مؤسسة الصقر الخليجي" (Gulf Falcon Corporation). The application features a comprehensive product catalog, brand management, image gallery, and contact system designed specifically for Middle Eastern men's fashion including traditional garments like thobes, mishlahs, and bishts. The application is built with Arabic-first design and RTL (right-to-left) support, featuring modern UI components, animations, and glassmorphism design elements.
+This is an ultra-luxurious, modern full-stack web application for a men's fashion company called "مؤسسة الصقر الخليجي" (Gulf Falcon Corporation). The application has been designed as a premium platform suitable for royalty, ministers, and high-profile officials. It features a comprehensive product catalog, brand management, image gallery, and contact system designed specifically for Middle Eastern men's fashion including traditional garments like thobes, mishlahs, and bishts. 
+
+The application showcases:
+- **Luxurious Design**: Gold, royal purple, and black color scheme inspired by luxury brands
+- **Premium Typography**: Cormorant Garamond font for elegant appearance
+- **Advanced Visual Effects**: Shimmer animations, golden glow effects, and luxury borders
+- **Sophisticated Glass Effects**: Enhanced glassmorphism with golden accents
+- **Arabic-first Design**: Full RTL support with refined Arabic typography
 
 # User Preferences
 
