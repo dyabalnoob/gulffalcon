@@ -10,25 +10,25 @@ interface ProductCardProps {
 export default function ProductCard({ product, brand, onClick }: ProductCardProps) {
   return (
     <motion.button
-      className="glass-card p-4 rounded-3xl hover:shadow-2xl transition-all duration-300 text-right w-full"
-      whileHover={{ y: -4, scale: 1.02 }}
+      className="glass-card luxury-border p-6 rounded-2xl hover:shadow-2xl transition-all duration-500 text-right w-full group"
+      whileHover={{ y: -8, scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
       onClick={() => onClick?.(product)}
       data-testid={`card-product-${product.id}`}
     >
-      <div className="relative w-full h-64 rounded-2xl overflow-hidden mb-4">
+      <div className="relative w-full h-72 rounded-xl overflow-hidden mb-6 luxury-border">
         <img 
           src={product.imageUrl} 
           alt={product.title}
-          className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
       </div>
       <div className="text-right">
-        <h3 className="text-lg font-semibold mb-1" data-testid={`text-product-title-${product.id}`}>
+        <h3 className="text-xl font-bold mb-2 text-gradient" data-testid={`text-product-title-${product.id}`}>
           {product.title}
         </h3>
         {brand && (
-          <p className="text-sm opacity-70 mb-2" data-testid={`text-product-brand-${product.id}`}>
+          <p className="text-sm opacity-80 mb-3 text-yellow-500" data-testid={`text-product-brand-${product.id}`}>
             {brand.name}
           </p>
         )}
@@ -37,7 +37,7 @@ export default function ProductCard({ product, brand, onClick }: ProductCardProp
             {product.tags.map((tag, index) => (
               <span 
                 key={index}
-                className="px-2 py-1 text-xs bg-accent/20 text-accent rounded-lg"
+                className="px-3 py-1 text-xs bg-gradient-to-r from-yellow-400/20 to-amber-600/20 text-yellow-400 rounded-lg font-medium"
                 data-testid={`tag-product-${product.id}-${index}`}
               >
                 {tag}

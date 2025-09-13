@@ -16,12 +16,12 @@ export default function Navbar() {
 
   return (
     <motion.header 
-      className="fixed top-0 right-0 left-0 z-50 glass-card"
+      className="fixed top-0 right-0 left-0 z-50 glass-card luxury-border"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
           <motion.div 
@@ -29,14 +29,14 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             data-testid="link-logo"
           >
-            <div className="w-10 h-10 rounded-2xl bg-white/10 dark:bg-white/10 light:bg-brand-green/10 overflow-hidden flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl luxury-border bg-gradient-to-br from-yellow-400/20 to-amber-600/20 overflow-hidden flex items-center justify-center">
               <img 
                 src={logoImage} 
                 alt="مؤسسة الصقر الخليجي" 
-                className="w-8 h-8 object-contain"
+                className="w-10 h-10 object-contain"
               />
             </div>
-            <span className="font-bold text-lg">الصقر الخليجي</span>
+            <span className="font-bold text-xl tracking-wide text-gradient">الصقر الخليجي</span>
           </motion.div>
         </Link>
         
@@ -45,9 +45,9 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}>
               <motion.div
-                className={`px-3 py-2 rounded-xl hover:bg-white/10 dark:hover:bg-white/10 light:hover:bg-black/5 transition-all text-sm font-medium cursor-pointer ${
+                className={`px-4 py-2 rounded-xl hover:bg-gradient-to-r hover:from-yellow-400/10 hover:to-amber-600/10 transition-all text-sm font-semibold cursor-pointer uppercase tracking-wider ${
                   location === link.href 
-                    ? "bg-white/15 dark:bg-white/15 light:bg-black/5" 
+                    ? "bg-gradient-to-r from-yellow-400/20 to-amber-600/20 luxury-shimmer" 
                     : ""
                 }`}
                 whileHover={{ scale: 1.05 }}
