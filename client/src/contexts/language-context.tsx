@@ -5,6 +5,7 @@ type Language = 'ar' | 'en';
 interface Translations {
   nav: {
     home: string;
+    about: string;
     products: string;
     brands: string;
     gallery: string;
@@ -70,6 +71,7 @@ const translations: Record<Language, Translations> = {
   ar: {
     nav: {
       home: 'الرئيسية',
+      about: 'من نحن',
       products: 'المنتجات',
       brands: 'الماركات',
       gallery: 'المعرض',
@@ -133,6 +135,7 @@ const translations: Record<Language, Translations> = {
   en: {
     nav: {
       home: 'Home',
+      about: 'About Us',
       products: 'Products',
       brands: 'Brands',
       gallery: 'Gallery',

@@ -10,6 +10,7 @@ import Footer from "@/components/layout/footer";
 import ScrollProgress from "@/components/scroll-progress";
 import WhatsAppFloat from "@/components/whatsapp-float";
 import Home from "@/pages/home";
+import About from "@/pages/about";
 import Products from "@/pages/products";
 import Brands from "@/pages/brands";
 import Gallery from "@/pages/gallery";
@@ -21,6 +22,7 @@ function Router() {
     <AnimatePresence mode="wait">
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/about" component={About} />
         <Route path="/products" component={Products} />
         <Route path="/brands" component={Brands} />
         <Route path="/gallery" component={Gallery} />

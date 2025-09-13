@@ -69,9 +69,15 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p>{t.about.paragraph1}</p>
-          <p>{t.about.paragraph2}</p>
-          <p>{t.about.paragraph3}</p>
+          <p className="mb-4">
+            منذ انطلاقتها في الرياض عام 1979م، جمعت المؤسسة بين الأصالة والابتكار لتبني علامة تجارية راسخة في عالم الأناقة الرجالية. وفي عام 1986م وُلد براند الصقر الخليجي ليصبح رمزًا للجودة والفخامة في السوق الخليجي.
+          </p>
+          <p className="mb-4">
+            على مدى أكثر من أربعة عقود، وسّعت المؤسسة حضورها عبر مركزها التجاري الكبير بالرياض، بخدمات متكاملة تلبي تطلعات عملائها من مختلف المناطق.
+          </p>
+          <p>
+            تُعد الصقر الخليجي أول من ابتكر عقال الشبح عام 1990 للأسواق الخليجية، كما انفردت بكونها المورد والموزع لمشالح نبيه حمد الله، وتواصل اليوم تقديم نخبة من المشالح الصيفية والشتوية بألوان نجفية وحساوية وكويتية أصيلة.
+          </p>
           <motion.div 
             className="mt-8"
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +87,7 @@ export default function Home() {
               href="/about" 
               className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-2xl font-semibold hover:scale-105 transition-all"
             >
-              {t.about.readMore}
+              اقرأ المزيد
             </a>
           </motion.div>
         </motion.div>

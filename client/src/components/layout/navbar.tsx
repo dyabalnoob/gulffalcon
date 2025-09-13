@@ -11,6 +11,7 @@ export default function Navbar() {
   
   const navLinks = [
     { href: "/", label: t.nav.home },
+    { href: "/about", label: t.nav.about || "من نحن" },
     { href: "/products", label: t.nav.products },
     { href: "/brands", label: t.nav.brands },
     { href: "/gallery", label: t.nav.gallery },
@@ -32,14 +33,14 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             data-testid="link-logo"
           >
-            <div className="w-10 h-10 rounded-lg professional-border bg-gradient-to-br from-green-500/15 to-teal-600/15 overflow-hidden flex items-center justify-center">
+            <div className="w-14 h-14 rounded-xl professional-border bg-gradient-to-br from-green-500/15 to-teal-600/15 overflow-hidden flex items-center justify-center">
               <img 
                 src={logoImage} 
                 alt="مؤسسة الصقر الخليجي" 
-                className="w-8 h-8 object-contain"
+                className="w-12 h-12 object-contain"
               />
             </div>
-            <span className="font-semibold text-lg text-primary">الصقر الخليجي</span>
+            <span className="font-bold text-xl text-gradient">الصقر الخليجي</span>
           </motion.div>
         </Link>
         
