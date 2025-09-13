@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/language-context";
 import type { Product, Brand } from "@shared/schema";
 
 interface ProductCardProps {
@@ -8,6 +9,8 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, brand, onClick }: ProductCardProps) {
+  const { isRTL } = useLanguage();
+  
   return (
     <motion.button
       className="glass-card professional-border p-5 rounded-xl hover:shadow-xl transition-all duration-300 text-right w-full group"
@@ -18,20 +21,46 @@ export default function ProductCard({ product, brand, onClick }: ProductCardProp
     >
       <div className="relative w-full h-64 rounded-lg overflow-hidden mb-4 professional-border">
         <img 
-          src={product.imageUrl} 
-          alt={product.title}
+          src={product.mainImage} 
+          alt={isRTL ? product.nameAr : product.nameEn}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
+        {product.isNew && (
+          <span className="absolute top-2 left-2 px-3 py-1 bg-green-500 text-white text-xs rounded-lg font-medium">
+            {isRTL ? "جديد" : "New"}
+          </span>
+        )}
+        {product.featured && (
+          <span className="absolute top-2 right-2 px-3 py-1 bg-primary text-primary-foreground text-xs rounded-lg font-medium">
+            {isRTL ? "مميز" : "Featured"}
+          </span>
+        )}
       </div>
       <div className="text-right">
         <h3 className="text-xl font-bold mb-2 text-gradient" data-testid={`text-product-title-${product.id}`}>
-          {product.title}
+          {isRTL ? product.nameAr : product.nameEn}
         </h3>
         {brand && (
           <p className="text-sm opacity-80 mb-3 text-secondary" data-testid={`text-product-brand-${product.id}`}>
-            {brand.name}
+            {isRTL ? brand.nameAr : brand.nameEn}
           </p>
         )}
+        <div className="flex items-center gap-2 justify-end mb-3">
+          {product.salePrice && parseFloat(product.salePrice) < parseFloat(product.price) ? (
+            <>
+              <span className="text-lg font-bold text-primary">
+                {product.salePrice} SAR
+              </span>
+              <span className="text-sm line-through opacity-60">
+                {product.price} SAR
+              </span>
+            </>
+          ) : (
+            <span className="text-lg font-bold text-primary">
+              {product.price} SAR
+            </span>
+          )}
+        </div>
         {product.tags && product.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 justify-end">
             {product.tags.map((tag, index) => (
