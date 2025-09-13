@@ -5,10 +5,9 @@ export function useScrollProgress() {
 
   useEffect(() => {
     const updateScrollProgress = () => {
-      const scrollPercent =
-        document.documentElement.scrollTop /
-          (document.documentElement.scrollHeight -
-            document.documentElement.clientHeight) || 0;
+      const scrollPercent = 
+        document.documentElement.scrollTop / 
+        (document.documentElement.scrollHeight - document.documentElement.clientHeight) || 0;
       setScrollProgress(scrollPercent);
     };
 

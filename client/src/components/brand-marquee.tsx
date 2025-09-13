@@ -12,7 +12,7 @@ export default function BrandMarquee() {
   return (
     <section className="py-12 bg-muted/10 dark:bg-muted/10 light:bg-muted/30">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.h2
+        <motion.h2 
           className="text-center text-2xl font-bold mb-8 text-accent"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -21,13 +21,13 @@ export default function BrandMarquee() {
           شركاؤنا المتميزون
         </motion.h2>
         <div className="relative overflow-hidden">
-          <motion.div
+          <motion.div 
             className="flex gap-12 will-change-transform"
             animate={{ x: [0, -50 + "%"] }}
-            transition={{
-              duration: 40,
-              repeat: Infinity,
-              ease: "linear",
+            transition={{ 
+              duration: 40, 
+              repeat: Infinity, 
+              ease: "linear" 
             }}
           >
             {displayBrands.map((brand, index) => (

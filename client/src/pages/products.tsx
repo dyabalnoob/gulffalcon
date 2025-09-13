@@ -24,17 +24,14 @@ export default function Products() {
   });
 
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      const matchesSearch =
-        !filters.search ||
+    return products.filter(product => {
+      const matchesSearch = !filters.search || 
         product.title.toLowerCase().includes(filters.search.toLowerCase());
-
-      const matchesBrand =
-        !filters.brandId || product.brandId === filters.brandId;
-
-      const matchesTags =
-        filters.tags.length === 0 ||
-        filters.tags.every((tag) => product.tags?.includes(tag));
+      
+      const matchesBrand = !filters.brandId || product.brandId === filters.brandId;
+      
+      const matchesTags = filters.tags.length === 0 || 
+        filters.tags.every(tag => product.tags?.includes(tag));
 
       return matchesSearch && matchesBrand && matchesTags;
     });
@@ -54,7 +51,7 @@ export default function Products() {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-6xl mx-auto px-6">
-        <motion.h1
+        <motion.h1 
           className="text-3xl md:text-4xl font-bold text-accent text-center mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,16 +60,19 @@ export default function Products() {
           المنتجات
         </motion.h1>
 
-        <ProductFilters brands={brands} onFilter={setFilters} />
+        <ProductFilters 
+          brands={brands} 
+          onFilter={setFilters} 
+        />
 
-        <motion.div
+        <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {filteredProducts.map((product, index) => {
-            const brand = brands.find((b) => b.id === product.brandId);
+            const brand = brands.find(b => b.id === product.brandId);
             return (
               <motion.div
                 key={product.id}

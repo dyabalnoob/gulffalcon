@@ -6,19 +6,19 @@ import ProductCard from "@/components/product-card";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import type { Product, Brand } from "@shared/schema";
 
-function Section({
-  children,
-  title,
-  tone = "normal",
-}: {
-  children: React.ReactNode;
-  title: string;
-  tone?: "normal" | "muted";
+function Section({ 
+  children, 
+  title, 
+  tone = "normal" 
+}: { 
+  children: React.ReactNode; 
+  title: string; 
+  tone?: "normal" | "muted" 
 }) {
   const { ref, isVisible } = useIntersectionObserver();
 
   return (
-    <motion.section
+    <motion.section 
       ref={ref}
       className={`py-20 ${tone === "muted" ? "brand-gradient" : ""}`}
       initial={{ opacity: 0, y: 30 }}
@@ -26,7 +26,7 @@ function Section({
       transition={{ duration: 0.8 }}
     >
       <div className="max-w-6xl mx-auto px-6">
-        <motion.h2
+        <motion.h2 
           className="text-3xl md:text-4xl font-bold mb-6 text-center text-accent"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -59,36 +59,30 @@ export default function Home() {
       transition={{ duration: 0.5 }}
     >
       <Hero />
-
+      
       <Section title="نبذة عن المؤسسة">
-        <motion.div
+        <motion.div 
           className="text-lg leading-8 text-center opacity-90 max-w-4xl mx-auto space-y-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p>
-            انطلقت مؤسسة الصقر الخليجي للتجارة والمقاولات من مدينة الرياض عام
-            1979م على يد مؤسسها عايض بن دليم فهد النوب، برؤية تجارية طموحة جمعت
-            بين الأصالة والابتكار.
+            انطلقت مؤسسة الصقر الخليجي للتجارة والمقاولات من مدينة الرياض عام 1979م على يد مؤسسها عايض بن دليم فهد النوب، برؤية تجارية طموحة جمعت بين الأصالة والابتكار.
           </p>
           <p>
-            وفي عام 1986م، جاءت النقلة النوعية مع إطلاق براند الصقر الخليجي
-            كهوية تجارية بارزة، جعلت من المؤسسة اسمًا راسخًا في السوق السعودي.
+            وفي عام 1986م، جاءت النقلة النوعية مع إطلاق براند الصقر الخليجي كهوية تجارية بارزة، جعلت من المؤسسة اسمًا راسخًا في السوق السعودي.
           </p>
           <p>
-            اليوم، وبعد أكثر من أربعة عقود من العمل والإنجاز، تتمركز إدارة
-            المؤسسة ومقرها الرئيسي في أسواق القرية الشعبية بالرياض، حيث تمتلك
-            مركزًا تجاريًا كبيرًا بفتحات متعددة يخدم جميع سكان منطقة الرياض
-            والمناطق المجاورة.
+            اليوم، وبعد أكثر من أربعة عقود من العمل والإنجاز، تتمركز إدارة المؤسسة ومقرها الرئيسي في أسواق القرية الشعبية بالرياض، حيث تمتلك مركزًا تجاريًا كبيرًا بفتحات متعددة يخدم جميع سكان منطقة الرياض والمناطق المجاورة.
           </p>
-          <motion.div
+          <motion.div 
             className="mt-8"
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <a
-              href="/about"
+            <a 
+              href="/about" 
               className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-2xl font-semibold hover:scale-105 transition-all"
             >
               اقرأ المزيد
@@ -102,7 +96,7 @@ export default function Home() {
       <Section title="مختارات" tone="muted">
         <div className="grid md:grid-cols-3 gap-6">
           {featuredProducts.map((product, index) => {
-            const brand = brands.find((b) => b.id === product.brandId);
+            const brand = brands.find(b => b.id === product.brandId);
             return (
               <motion.div
                 key={product.id}
@@ -110,7 +104,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <ProductCard product={product} brand={brand} />
+                <ProductCard 
+                  product={product} 
+                  brand={brand}
+                />
               </motion.div>
             );
           })}

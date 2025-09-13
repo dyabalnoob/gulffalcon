@@ -4,7 +4,7 @@ export default function ScrollProgress() {
   const scrollProgress = useScrollProgress();
 
   return (
-    <div
+    <div 
       className="scroll-progress"
       style={{ transform: `scaleX(${scrollProgress})` }}
     />

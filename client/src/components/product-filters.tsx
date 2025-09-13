@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import type { Brand } from "@shared/schema";
 
@@ -21,10 +15,7 @@ interface ProductFiltersProps {
 
 const availableTags = ["ثوب", "مشلح", "بشت", "فاخر", "تقليدي"];
 
-export default function ProductFilters({
-  brands,
-  onFilter,
-}: ProductFiltersProps) {
+export default function ProductFilters({ brands, onFilter }: ProductFiltersProps) {
   const [search, setSearch] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("all");
   const [activeTags, setActiveTags] = useState<string[]>([]);
@@ -38,8 +29,10 @@ export default function ProductFilters({
   };
 
   const toggleTag = (tag: string) => {
-    setActiveTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+    setActiveTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
     );
   };
 
@@ -59,10 +52,7 @@ export default function ProductFilters({
           data-testid="input-search-products"
         />
         <Select value={selectedBrand} onValueChange={setSelectedBrand}>
-          <SelectTrigger
-            className="md:w-48 rounded-2xl bg-input border-border"
-            data-testid="select-brand-filter"
-          >
+          <SelectTrigger className="md:w-48 rounded-2xl bg-input border-border" data-testid="select-brand-filter">
             <SelectValue placeholder="كل الماركات" />
           </SelectTrigger>
           <SelectContent>
@@ -74,7 +64,7 @@ export default function ProductFilters({
             ))}
           </SelectContent>
         </Select>
-        <Button
+        <Button 
           onClick={handleFilter}
           className="px-8 py-3 rounded-2xl bg-primary text-primary-foreground font-bold hover:scale-105 transition-all"
           data-testid="button-apply-filter"
@@ -82,7 +72,7 @@ export default function ProductFilters({
           تطبيق الفلتر
         </Button>
       </div>
-
+      
       {/* Filter Tags */}
       <div className="flex flex-wrap gap-2 mt-4">
         {availableTags.map((tag) => (

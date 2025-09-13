@@ -32,61 +32,37 @@ export default function Responsibility() {
         >
           <div className="glass-card p-8 rounded-3xl mb-8">
             <p className="text-lg leading-relaxed mb-6">
-              إلى جانب نجاحها التجاري، أولت مؤسسة الصقر الخليجي للتجارة
-              والمقاولات اهتمامًا خاصًا بـ التنمية المجتمعية، إدراكًا منها بأن
-              دورها لا يقتصر على البيع والتوزيع فقط، بل يتجاوز ذلك إلى الإسهام
-              في خدمة المجتمع وتعزيز قيم المسؤولية الوطنية.
+              إلى جانب نجاحها التجاري، أولت مؤسسة الصقر الخليجي للتجارة والمقاولات اهتمامًا خاصًا بـ التنمية المجتمعية، إدراكًا منها بأن دورها لا يقتصر على البيع والتوزيع فقط، بل يتجاوز ذلك إلى الإسهام في خدمة المجتمع وتعزيز قيم المسؤولية الوطنية.
             </p>
 
             <p className="text-lg leading-relaxed mb-6">
-              منذ انطلاقتها، حرصت المؤسسة على أن تكون شريكًا فاعلًا في التنمية
-              من خلال:
+              منذ انطلاقتها، حرصت المؤسسة على أن تكون شريكًا فاعلًا في التنمية من خلال:
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="bg-primary/10 p-6 rounded-2xl">
-                <h3 className="text-xl font-bold mb-3 text-accent">
-                  الفعاليات الوطنية
-                </h3>
-                <p className="leading-relaxed">
-                  دعم الفعاليات الوطنية والمناسبات الاجتماعية
-                </p>
+                <h3 className="text-xl font-bold mb-3 text-accent">الفعاليات الوطنية</h3>
+                <p className="leading-relaxed">دعم الفعاليات الوطنية والمناسبات الاجتماعية</p>
               </div>
 
               <div className="bg-primary/10 p-6 rounded-2xl">
-                <h3 className="text-xl font-bold mb-3 text-accent">
-                  المبادرات الخيرية
-                </h3>
-                <p className="leading-relaxed">
-                  المشاركة في المبادرات الخيرية والإنسانية
-                </p>
+                <h3 className="text-xl font-bold mb-3 text-accent">المبادرات الخيرية</h3>
+                <p className="leading-relaxed">المشاركة في المبادرات الخيرية والإنسانية</p>
               </div>
 
               <div className="bg-primary/10 p-6 rounded-2xl">
-                <h3 className="text-xl font-bold mb-3 text-accent">
-                  دعم الكوادر السعودية
-                </h3>
-                <p className="leading-relaxed">
-                  توفير فرص عمل ودعم الكوادر السعودية الشابة
-                </p>
+                <h3 className="text-xl font-bold mb-3 text-accent">دعم الكوادر السعودية</h3>
+                <p className="leading-relaxed">توفير فرص عمل ودعم الكوادر السعودية الشابة</p>
               </div>
 
               <div className="bg-primary/10 p-6 rounded-2xl">
-                <h3 className="text-xl font-bold mb-3 text-accent">
-                  ثقافة الجودة
-                </h3>
-                <p className="leading-relaxed">
-                  تعزيز ثقافة الجودة والانضباط في بيئة العمل بما ينعكس إيجابًا
-                  على المجتمع
-                </p>
+                <h3 className="text-xl font-bold mb-3 text-accent">ثقافة الجودة</h3>
+                <p className="leading-relaxed">تعزيز ثقافة الجودة والانضباط في بيئة العمل بما ينعكس إيجابًا على المجتمع</p>
               </div>
             </div>
 
             <p className="text-lg leading-relaxed">
-              هذا التوجه جعل من الصقر الخليجي مؤسسة ذات بصمة مزدوجة: بصمة تجارية
-              راسخة في الأسواق، وبصمة مجتمعية حاضرة في الميدان، تسعى لخلق قيمة
-              مضافة للمجتمع السعودي انسجامًا مع مبادئ رؤية المملكة 2030 في تمكين
-              القطاع الخاص من لعب دور تنموي فاعل.
+              هذا التوجه جعل من الصقر الخليجي مؤسسة ذات بصمة مزدوجة: بصمة تجارية راسخة في الأسواق، وبصمة مجتمعية حاضرة في الميدان، تسعى لخلق قيمة مضافة للمجتمع السعودي انسجامًا مع مبادئ رؤية المملكة 2030 في تمكين القطاع الخاص من لعب دور تنموي فاعل.
             </p>
           </div>
 

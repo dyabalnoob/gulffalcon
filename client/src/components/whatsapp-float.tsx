@@ -1,7 +1,7 @@
 export default function WhatsAppFloat() {
   const phoneNumber = "966501234567";
   const message = "مرحبا، أريد الاستفسار عن منتجاتكم";
-
+  
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (

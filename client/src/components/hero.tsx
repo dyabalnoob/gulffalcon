@@ -7,26 +7,26 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center brand-gradient">
       {/* Video Background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
-        autoPlay
-        loop
-        muted
+      <video 
+        className="absolute inset-0 w-full h-full object-cover opacity-40" 
+        autoPlay 
+        loop 
+        muted 
         playsInline
         preload="auto"
         poster={logoImage}
         onError={(e) => {
-          console.error("Video loading error:", e);
+          console.error('Video loading error:', e);
           // Hide video on error
-          (e.target as HTMLVideoElement).style.display = "none";
+          (e.target as HTMLVideoElement).style.display = 'none';
         }}
-        onLoadStart={() => console.log("Video loading started")}
-        onCanPlay={() => console.log("Video ready to play")}
-        onLoadedData={() => console.log("Video data loaded")}
+        onLoadStart={() => console.log('Video loading started')}
+        onCanPlay={() => console.log('Video ready to play')}
+        onLoadedData={() => console.log('Video data loaded')}
       >
         <source src={heroVideo} type="video/mp4" />
       </video>
-
+      
       {/* Hero Content */}
       <div className="max-w-6xl mx-auto px-6 relative z-10 text-center">
         <motion.div
@@ -35,20 +35,20 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           {/* Brand Icon */}
-          <motion.div
+          <motion.div 
             className="mx-auto mb-6 w-40 h-40 rounded-3xl glass-card overflow-hidden flex items-center justify-center"
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
-            <img
-              src={logoImage}
-              alt="مؤسسة الصقر الخليجي"
+            <img 
+              src={logoImage} 
+              alt="مؤسسة الصقر الخليجي" 
               className="w-32 h-32 object-contain"
             />
           </motion.div>
-
+          
           {/* Main Heading */}
-          <motion.h1
+          <motion.h1 
             className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-4 text-gradient"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -56,33 +56,32 @@ export default function Hero() {
           >
             الصقر الخليجي للتجارة
           </motion.h1>
-
+          
           {/* Subtitle */}
-          <motion.p
+          <motion.p 
             className="mt-4 text-lg md:text-xl opacity-90 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            مشالح فاخرة للنخبة… علامة تجارية سعودية بواجهة محلية وعالمية، مع
-            شبكة جملة وقطاع فردي، ووكلاء وموزعين.
+            مشالح فاخرة للنخبة… علامة تجارية سعودية بواجهة محلية وعالمية، مع شبكة جملة وقطاع فردي، ووكلاء وموزعين.
           </motion.p>
-
+          
           {/* CTA Buttons */}
-          <motion.div
+          <motion.div 
             className="mt-8 flex items-center justify-center gap-4 flex-wrap"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Button
+            <Button 
               asChild
               className="px-8 py-4 rounded-2xl bg-primary text-primary-foreground font-bold hover:scale-105 transition-all shadow-lg"
               data-testid="button-hero-catalog"
             >
               <a href="/products">استعرض الكتالوج</a>
             </Button>
-            <Button
+            <Button 
               asChild
               variant="ghost"
               className="px-8 py-4 rounded-2xl glass-card font-bold hover:scale-105 transition-all"
@@ -93,14 +92,14 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </div>
-
+      
       {/* Decorative Blurs */}
-      <motion.div
+      <motion.div 
         className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-primary/30 blur-3xl"
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <motion.div 
         className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-accent/30 blur-3xl"
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}

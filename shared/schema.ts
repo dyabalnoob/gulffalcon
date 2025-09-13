@@ -4,17 +4,13 @@ import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
 export const users = pgTable("users", {
-  id: varchar("id")
-    .primaryKey()
-    .default(sql`gen_random_uuid()`),
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   username: text("username").notNull().unique(),
   password: text("password").notNull(),
 });
 
 export const brands = pgTable("brands", {
-  id: varchar("id")
-    .primaryKey()
-    .default(sql`gen_random_uuid()`),
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   name: text("name").notNull(),
   slug: text("slug").notNull().unique(),
   description: text("description"),
@@ -23,9 +19,7 @@ export const brands = pgTable("brands", {
 });
 
 export const products = pgTable("products", {
-  id: varchar("id")
-    .primaryKey()
-    .default(sql`gen_random_uuid()`),
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   title: text("title").notNull(),
   description: text("description"),
   imageUrl: text("image_url").notNull(),
@@ -35,9 +29,7 @@ export const products = pgTable("products", {
 });
 
 export const galleryItems = pgTable("gallery_items", {
-  id: varchar("id")
-    .primaryKey()
-    .default(sql`gen_random_uuid()`),
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   title: text("title").notNull(),
   imageUrl: text("image_url").notNull(),
   description: text("description"),
@@ -45,9 +37,7 @@ export const galleryItems = pgTable("gallery_items", {
 });
 
 export const contactMessages = pgTable("contact_messages", {
-  id: varchar("id")
-    .primaryKey()
-    .default(sql`gen_random_uuid()`),
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   name: text("name").notNull(),
   email: text("email").notNull(),
   phone: text("phone"),
@@ -76,9 +66,7 @@ export const insertGalleryItemSchema = createInsertSchema(galleryItems).omit({
   createdAt: true,
 });
 
-export const insertContactMessageSchema = createInsertSchema(
-  contactMessages,
-).omit({
+export const insertContactMessageSchema = createInsertSchema(contactMessages).omit({
   id: true,
   createdAt: true,
 });
