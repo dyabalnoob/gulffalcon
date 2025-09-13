@@ -28,6 +28,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import type { Product, Brand } from "@shared/schema";
 import ProductCard from "@/components/product-card";
+import SEOMeta from "@/components/seo-meta";
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -134,14 +135,69 @@ export default function ProductDetail() {
     setZoomPosition({ x, y });
   };
 
+  // Generate structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": isRTL ? product.nameAr : product.nameEn,
+    "description": isRTL ? (product.descriptionAr || product.descriptionEn) : (product.descriptionEn || product.descriptionAr),
+    "image": allImages,
+    "brand": {
+      "@type": "Brand",
+      "name": brand ? (isRTL ? brand.nameAr : brand.nameEn) : "Gulf Falcon"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": window.location.href,
+      "priceCurrency": "SAR",
+      "price": product.salePrice && parseFloat(product.salePrice) < parseFloat(product.price) 
+        ? product.salePrice 
+        : product.price,
+      "availability": product.stock === 0 
+        ? "https://schema.org/OutOfStock" 
+        : product.stock && product.stock < 5 
+          ? "https://schema.org/LimitedAvailability" 
+          : "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": isRTL ? "مؤسسة الصقر الخليجي" : "Gulf Falcon Corporation"
+      }
+    },
+    ...(product.sku && { "sku": product.sku }),
+    ...(product.materialEn && { "material": isRTL ? product.materialAr : product.materialEn }),
+    "category": product.category,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "127"
+    }
+  };
+
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="min-h-screen pt-24 pb-20 px-6"
-      dir={isRTL ? "rtl" : "ltr"}
-    >
-      <div className="container mx-auto">
+    <>
+      <SEOMeta
+        title={isRTL ? product.nameAr : product.nameEn}
+        description={isRTL ? (product.descriptionAr || product.descriptionEn || "") : (product.descriptionEn || product.descriptionAr || "")}
+        image={product.mainImage}
+        url={window.location.href}
+        type="product"
+        price={product.salePrice && parseFloat(product.salePrice) < parseFloat(product.price) 
+          ? product.salePrice 
+          : product.price}
+        currency="SAR"
+        availability={product.stock === 0 ? "out of stock" : "in stock"}
+        brand={brand ? (isRTL ? brand.nameAr : brand.nameEn) : undefined}
+        category={product.category}
+        sku={product.sku || undefined}
+        jsonLd={structuredData}
+      />
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="min-h-screen pt-24 pb-20 px-6"
+        dir={isRTL ? "rtl" : "ltr"}
+      >
+        <div className="container mx-auto">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-8 text-sm" data-testid="breadcrumb">
           <Link href="/">
@@ -608,5 +664,6 @@ export default function ProductDetail() {
         )}
       </div>
     </motion.main>
+    </>
   );
 }

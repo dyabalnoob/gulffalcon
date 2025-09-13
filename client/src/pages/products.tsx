@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Product, Brand } from "@shared/schema";
+import SEOMeta from "@/components/seo-meta";
 
 const categories = [
   { id: "all", nameAr: "جميع المنتجات", nameEn: "All Products", icon: Package },
@@ -113,14 +114,28 @@ export default function Products() {
     }).format(parseFloat(price));
   };
 
+  const currentCategory = categories.find(c => c.id === selectedCategory);
+  const pageTitle = isRTL 
+    ? currentCategory?.nameAr || "المنتجات" 
+    : currentCategory?.nameEn || "Products";
+  const pageDescription = isRTL
+    ? `تسوق أفخم ${currentCategory?.nameAr || "المنتجات"} من مؤسسة الصقر الخليجي - أزياء رجالية راقية`
+    : `Shop luxury ${currentCategory?.nameEn || "products"} from Gulf Falcon Corporation - Premium men's fashion`;
+
   return (
-    <motion.main
-      className="min-h-screen pt-24 pb-10"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <>
+      <SEOMeta
+        title={pageTitle}
+        description={pageDescription}
+        type="website"
+      />
+      <motion.main
+        className="min-h-screen pt-24 pb-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div 
@@ -651,5 +666,6 @@ export default function Products() {
         </DialogContent>
       </Dialog>
     </motion.main>
+    </>
   );
 }
