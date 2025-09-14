@@ -58,6 +58,7 @@ export default function Products() {
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedColor, setSelectedColor] = useState<string>("");
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
 
   const { data: products = [], isLoading: productsLoading } = useQuery<Product[]>({
     queryKey: ["/api/products"],
@@ -350,6 +351,7 @@ export default function Products() {
                               setQuickViewProduct(product);
                               setSelectedSize(product.sizes?.[0] || "");
                               setSelectedColor("");
+                              setIsQuickViewOpen(true);
                             }}
                             data-testid={`button-view-${product.id}`}
                           >
@@ -478,7 +480,16 @@ export default function Products() {
       </div>
 
       {/* Quick View Dialog */}
-      <Dialog open={!!quickViewProduct} onOpenChange={(open) => !open && setQuickViewProduct(null)}>
+      <Dialog 
+        open={isQuickViewOpen} 
+        onOpenChange={(open) => {
+          setIsQuickViewOpen(open);
+          if (!open) {
+            // تأخير تنظيف البيانات حتى ينتهي animation الإغلاق
+            setTimeout(() => setQuickViewProduct(null), 200);
+          }
+        }}
+      >
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto" data-testid="dialog-quick-view">
           {quickViewProduct && (
             <div className="grid md:grid-cols-2 gap-6">
