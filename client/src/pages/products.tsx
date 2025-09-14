@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/language-context";
 import { 
   Search, Filter, Grid3x3, Grid2x2, ChevronDown, 
   Star, ShoppingBag, Heart, Eye, Sparkles, TrendingUp,
-  Package, Shirt, X, Check, Palette, Circle, Zap
+  Package, Shirt, X, Check, Palette, Circle, Zap, Crown
 } from "lucide-react";
 import {
   Select,
@@ -35,6 +35,7 @@ const categories = [
   { id: "prayer-beads", nameAr: "المسابح", nameEn: "Prayer Beads", icon: Circle },
   { id: "walking-sticks", nameAr: "العصي والمعاكز", nameEn: "Walking Sticks", icon: Zap },
   { id: "women-collection", nameAr: "المجموعة النسائية - شتاء 2026", nameEn: "Women's Collection - Winter 2026", icon: Sparkles },
+  { id: "shemagh", nameAr: "الشماغات", nameEn: "Shemagh Collection", icon: Crown },
   { id: "thobes", nameAr: "الثياب", nameEn: "Thobes", icon: Shirt },
   { id: "mishlahs", nameAr: "المشالح", nameEn: "Mishlahs", icon: Shirt },
   { id: "bishts", nameAr: "البشوت", nameEn: "Bishts", icon: Shirt },
