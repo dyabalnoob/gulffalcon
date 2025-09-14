@@ -761,6 +761,35 @@ export class MemStorage implements IStorage {
         isNew: true,
         isCustomizable: true,
         sku: "WW-MISH-007"
+      },
+
+      // الشماغات - Shemagh Collection (إصدار خاص 2026)
+      {
+        nameAr: "شماغ شتوي 2026 - إصدار خاص محدود",
+        nameEn: "Winter Shemagh 2026 - Limited Special Edition", 
+        slug: "winter-shemagh-2026-special-edition",
+        descriptionAr: "شماغ شتوي فاخر بتصميم حصري لعام 2026، نسيج قطني فائق النعومة مع نقشات تراثية أنيقة باللون الأحمر التقليدي، مصنوع بعناية فائقة وتفاصيل دقيقة تجمع بين الأصالة والعصرية",
+        descriptionEn: "Luxurious winter shemagh with exclusive 2026 design, ultra-soft cotton fabric with elegant traditional red patterns, crafted with exceptional care and fine details combining authenticity with modernity",
+        luxuryTaglineAr: "تحفة أرستقراطية شتوية تأسر القلوب بأناقتها الملكية الاستثنائية والجمال الأبدي",
+        luxuryTaglineEn: "An aristocratic winter masterpiece that captivates hearts with exceptional royal elegance and eternal beauty",
+        mainImage: "/images/products/الصقر-الخليجي-شماغ-شتوي-2026-special-edition.jpg",
+        images: [],
+        category: "shemagh",
+        subcategory: "winter",
+        brandId: brandIds[0],
+        tags: ["شماغ", "شتوي", "إصدار خاص", "2026", "محدود", "تراثي", "أنيق"],
+        sizes: ["OneSize"],
+        colors: [
+          { nameAr: "أحمر تراثي مع أبيض", nameEn: "Heritage Red with White", hex: "#DC143C" },
+          { nameAr: "أبيض كلاسيكي", nameEn: "Classic White", hex: "#FFFFFF" }
+        ],
+        materialAr: "قطن فاخر منسوج بتقنيات تقليدية متطورة",
+        materialEn: "Premium cotton woven with advanced traditional techniques",
+        stock: 50,
+        featured: true,
+        isNew: true,
+        isCustomizable: false,
+        sku: "SH-WIN-2026-SE"
       }
     ];
 
