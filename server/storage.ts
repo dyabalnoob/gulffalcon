@@ -95,11 +95,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "صوف طبيعي مع فرو",
         materialEn: "Natural wool with fur",
+        price: null,
+        salePrice: null,
         stock: 10,
         featured: true,
         isNew: true,
         isCustomizable: true,
-        sku: "VEST-SE-001"
+        sku: "VEST-SE-001",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "سديرية رجالي كلاسيك",
@@ -125,11 +129,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "قطن مصري",
         materialEn: "Egyptian cotton",
+        price: null,
+        salePrice: null,
         stock: 15,
         featured: false,
         isNew: false,
         isCustomizable: true,
-        sku: "VEST-CL-002"
+        sku: "VEST-CL-002",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "سديرية عصرية رياضية",
@@ -155,11 +163,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "بوليستر مبطن",
         materialEn: "Quilted polyester",
+        price: null,
+        salePrice: null,
         stock: 20,
         featured: true,
         isNew: true,
         isCustomizable: false,
-        sku: "VEST-SP-003"
+        sku: "VEST-SP-003",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "سديرية شتوية دافئة",
@@ -184,11 +196,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "صوف مع بطانة فرو",
         materialEn: "Wool with fur lining",
+        price: null,
+        salePrice: null,
         stock: 12,
         featured: false,
         isNew: false,
         isCustomizable: true,
-        sku: "VEST-WI-004"
+        sku: "VEST-WI-004",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "سديرية تفصيل يومي",
@@ -211,11 +227,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "قطن مخلوط",
         materialEn: "Cotton blend",
+        price: null,
+        salePrice: null,
         stock: 25,
         featured: false,
         isNew: false,
         isCustomizable: true,
-        sku: "VEST-CA-005"
+        sku: "VEST-CA-005",
+        metaTitle: null,
+        metaDescription: null
       },
       // Prayer Beads Products
       {
@@ -241,11 +261,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "خشب طبيعي مع طلاء ذهبي",
         materialEn: "Natural wood with golden coating",
+        price: null,
+        salePrice: null,
         stock: 8,
         featured: true,
         isNew: true,
         isCustomizable: false,
-        sku: "PB-LUX-001"
+        sku: "PB-LUX-001",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مسبحة العقيق الأحمر التراثية",
@@ -270,11 +294,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "عقيق أحمر طبيعي",
         materialEn: "Natural red agate",
+        price: null,
+        salePrice: null,
         stock: 12,
         featured: true,
         isNew: false,
         isCustomizable: false,
-        sku: "PB-AGT-002"
+        sku: "PB-AGT-002",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مسبحة الفيروز الفاخرة",
@@ -296,11 +324,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "فيروز طبيعي",
         materialEn: "Natural turquoise",
+        price: null,
+        salePrice: null,
         stock: 6,
         featured: false,
         isNew: false,
         isCustomizable: false,
-        sku: "PB-TUR-003"
+        sku: "PB-TUR-003",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مسبحة اللازورد الملكية",
@@ -322,11 +354,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "لازورد طبيعي",
         materialEn: "Natural lapis lazuli",
+        price: null,
+        salePrice: null,
         stock: 4,
         featured: true,
         isNew: false,
         isCustomizable: false,
-        sku: "PB-LAP-004"
+        sku: "PB-LAP-004",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مسبحة الأوبال الأسود الفاخرة",
@@ -350,11 +386,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "أوبال أسود طبيعي",
         materialEn: "Natural black opal",
+        price: null,
+        salePrice: null,
         stock: 3,
         featured: true,
         isNew: true,
         isCustomizable: false,
-        sku: "PB-OPL-005"
+        sku: "PB-OPL-005",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مجموعة مسابح ملونة تقليدية",
@@ -379,11 +419,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "خشب وأحجار طبيعية متنوعة",
         materialEn: "Wood and various natural stones",
+        price: null,
+        salePrice: null,
         stock: 20,
         featured: false,
         isNew: false,
         isCustomizable: true,
-        sku: "PB-COL-006"
+        sku: "PB-COL-006",
+        metaTitle: null,
+        metaDescription: null
       },
       // Walking Sticks Products
       {
@@ -406,11 +450,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "خشب الورد الأسود مع معدن فضي",
         materialEn: "Black rosewood with silver metal",
+        price: null,
+        salePrice: null,
         stock: 8,
         featured: true,
         isNew: true,
         isCustomizable: false,
-        sku: "WS-LUX-001"
+        sku: "WS-LUX-001",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "عصا تراثية مع شريط ذهبي",
@@ -432,11 +480,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "خشب طبيعي مع معدن ذهبي",
         materialEn: "Natural wood with golden metal",
+        price: null,
+        salePrice: null,
         stock: 5,
         featured: true,
         isNew: false,
         isCustomizable: true,
-        sku: "WS-TRA-002"
+        sku: "WS-TRA-002",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مجموعة العصي الملكية - رؤوس حيوانات",
@@ -459,11 +511,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "خشب الأبنوس مع معدن ذهبي وأحجار كريمة",
         materialEn: "Ebony wood with golden metal and gemstones",
+        price: null,
+        salePrice: null,
         stock: 3,
         featured: true,
         isNew: true,
         isCustomizable: false,
-        sku: "WS-ROY-003"
+        sku: "WS-ROY-003",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "عصا بنقوش الفيروز الفاخرة",
@@ -486,11 +542,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "خشب مطعم بالفيروز الطبيعي",
         materialEn: "Wood inlaid with natural turquoise",
+        price: null,
+        salePrice: null,
         stock: 6,
         featured: false,
         isNew: true,
         isCustomizable: true,
-        sku: "WS-ART-004"
+        sku: "WS-ART-004",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "عصا رأس الجمل التراثية",
@@ -512,11 +572,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "خشب منحوت يدوياً مع معدن فضي",
         materialEn: "Hand-carved wood with silver metal",
+        price: null,
+        salePrice: null,
         stock: 4,
         featured: true,
         isNew: false,
         isCustomizable: false,
-        sku: "WS-HER-005"
+        sku: "WS-HER-005",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "عصا الصقر مع الخط العربي",
@@ -538,11 +602,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "خشب منحوت مع تطريز ذهبي",
         materialEn: "Carved wood with golden embroidery",
+        price: null,
+        salePrice: null,
         stock: 2,
         featured: true,
         isNew: true,
         isCustomizable: false,
-        sku: "WS-CAL-006"
+        sku: "WS-CAL-006",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "طقم العصي الفاخر - هدية ملكية",
@@ -565,11 +633,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "خشب فاخر متنوع مع معادن نبيلة",
         materialEn: "Assorted luxury wood with noble metals",
+        price: null,
+        salePrice: null,
         stock: 2,
         featured: true,
         isNew: false,
         isCustomizable: false,
-        sku: "WS-SET-007"
+        sku: "WS-SET-007",
+        metaTitle: null,
+        metaDescription: null
       },
       // المجموعة النسائية الفاخرة - شتاء 2026 / Luxury Women's Collection - Winter 2026
       {
@@ -593,11 +665,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "صوف طبيعي مع بطانة حريرية",
         materialEn: "Natural wool with silk lining",
+        price: null,
+        salePrice: null,
         stock: 8,
         featured: true,
         isNew: true,
         isCustomizable: true,
-        sku: "WW-COAT-001"
+        sku: "WW-COAT-001",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "فروة نسائية تراثية - برتقالي وبني",
@@ -620,11 +696,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "فراء صناعي فاخر مع تطريز ذهبي",
         materialEn: "Luxury synthetic fur with golden embroidery",
+        price: null,
+        salePrice: null,
         stock: 6,
         featured: true,
         isNew: true,
         isCustomizable: false,
-        sku: "WW-FUR-002"
+        sku: "WW-FUR-002",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "فروة نسائية كلاسيكية - أحمر وأسود",
@@ -647,11 +727,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "فراء مخملي فاخر مع بطانة حريرية",
         materialEn: "Luxury velvet fur with silk lining",
+        price: null,
+        salePrice: null,
         stock: 5,
         featured: true,
         isNew: true,
         isCustomizable: true,
-        sku: "WW-FUR-003"
+        sku: "WW-FUR-003",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "فروة نسائية راقية - رمادي وأبيض",
@@ -674,11 +758,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "فراء فاخر مع تفاصيل معدنية",
         materialEn: "Luxury fur with metallic details",
+        price: null,
+        salePrice: null,
         stock: 4,
         featured: false,
         isNew: true,
         isCustomizable: true,
-        sku: "WW-FUR-004"
+        sku: "WW-FUR-004",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "فروة نسائية استثنائية - متعددة الألوان",
@@ -702,11 +790,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "فراء متدرج الألوان مع خيوط ذهبية",
         materialEn: "Gradient fur with golden threads",
+        price: null,
+        salePrice: null,
         stock: 3,
         featured: true,
         isNew: true,
         isCustomizable: false,
-        sku: "WW-FUR-005"
+        sku: "WW-FUR-005",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "فروة نسائية أنيقة - تصميم كاروهات",
@@ -729,11 +821,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "صوف كاروهات مع فراء طبيعي",
         materialEn: "Checkered wool with natural fur",
+        price: null,
+        salePrice: null,
         stock: 7,
         featured: false,
         isNew: true,
         isCustomizable: true,
-        sku: "WW-FUR-006"
+        sku: "WW-FUR-006",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مشلح نسائي فاخر - أزرق تراثي",
@@ -756,11 +852,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "قماش تراثي مطرز بخيوط ذهبية",
         materialEn: "Heritage fabric embroidered with golden threads",
+        price: null,
+        salePrice: null,
         stock: 6,
         featured: true,
         isNew: true,
         isCustomizable: true,
-        sku: "WW-MISH-007"
+        sku: "WW-MISH-007",
+        metaTitle: null,
+        metaDescription: null
       },
 
       // الشماغات - Shemagh Collection (إصدار خاص 2026)
@@ -785,11 +885,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "قطن فاخر منسوج بتقنيات تقليدية متطورة",
         materialEn: "Premium cotton woven with advanced traditional techniques",
+        price: null,
+        salePrice: null,
         stock: 50,
         featured: true,
         isNew: true,
         isCustomizable: false,
-        sku: "SH-WIN-2026-SE"
+        sku: "SH-WIN-2026-SE",
+        metaTitle: null,
+        metaDescription: null
       },
 
       // المشالح الرجالية الفاخرة - Premium Men's Mishlahs
@@ -815,11 +919,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "قماش قطني فاخر مع تطريز ذهبي يدوي",
         materialEn: "Premium cotton fabric with hand-stitched golden embroidery",
+        price: null,
+        salePrice: null,
         stock: 25,
         featured: true,
         isNew: true,
         isCustomizable: true,
-        sku: "MISH-MEN-BG-001"
+        sku: "MISH-MEN-BG-001",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مشلح رجالي فاخر - كحلي ملكي",
@@ -843,11 +951,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "قماش كحلي فاخر مع تطريز ذهبي ونقشات هندسية",
         materialEn: "Premium navy fabric with golden embroidery and geometric patterns",
+        price: null,
+        salePrice: null,
         stock: 20,
         featured: true,
         isNew: true,
         isCustomizable: true,
-        sku: "MISH-MEN-NV-002"
+        sku: "MISH-MEN-NV-002",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مشلح رجالي فاخر - أسود أنيق",
@@ -871,11 +983,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "قماش أسود فاخر مع تطريز ذهبي وخيوط لامعة",
         materialEn: "Premium black fabric with golden embroidery and shiny threads",
+        price: null,
+        salePrice: null,
         stock: 15,
         featured: true,
         isNew: true,
         isCustomizable: true,
-        sku: "MISH-MEN-BK-003"
+        sku: "MISH-MEN-BK-003",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مشلح رجالي فاخر - بيج كريمي",
@@ -899,11 +1015,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "قطن خالص فاخر مع تطريز ذهبي ناعم",
         materialEn: "Pure premium cotton with soft golden embroidery",
+        price: null,
+        salePrice: null,
         stock: 18,
         featured: true,
         isNew: true,
         isCustomizable: true,
-        sku: "MISH-MEN-BG-004"
+        sku: "MISH-MEN-BG-004",
+        metaTitle: null,
+        metaDescription: null
       },
       {
         nameAr: "مشلح رجالي فاخر - زيتوني عسكري",
@@ -927,11 +1047,15 @@ export class MemStorage implements IStorage {
         ],
         materialAr: "قماش زيتوني متين مع تطريز ذهبي مقاوم",
         materialEn: "Durable olive fabric with resistant golden embroidery",
+        price: null,
+        salePrice: null,
         stock: 12,
         featured: true,
         isNew: true,
         isCustomizable: true,
-        sku: "MISH-MEN-OL-005"
+        sku: "MISH-MEN-OL-005",
+        metaTitle: null,
+        metaDescription: null
       }
     ];
 
@@ -1069,9 +1193,44 @@ export class MemStorage implements IStorage {
     const product = this.products.get(id);
     if (!product) return undefined;
     
+    // Create a clean update object with proper null handling
+    const cleanUpdate: Partial<Product> = {};
+    
+    // Handle nullable string fields
+    if (productUpdate.descriptionAr !== undefined) cleanUpdate.descriptionAr = productUpdate.descriptionAr ?? null;
+    if (productUpdate.descriptionEn !== undefined) cleanUpdate.descriptionEn = productUpdate.descriptionEn ?? null;
+    if (productUpdate.luxuryTaglineAr !== undefined) cleanUpdate.luxuryTaglineAr = productUpdate.luxuryTaglineAr ?? null;
+    if (productUpdate.luxuryTaglineEn !== undefined) cleanUpdate.luxuryTaglineEn = productUpdate.luxuryTaglineEn ?? null;
+    if (productUpdate.price !== undefined) cleanUpdate.price = productUpdate.price ?? null;
+    if (productUpdate.salePrice !== undefined) cleanUpdate.salePrice = productUpdate.salePrice ?? null;
+    if (productUpdate.brandId !== undefined) cleanUpdate.brandId = productUpdate.brandId ?? null;
+    if (productUpdate.subcategory !== undefined) cleanUpdate.subcategory = productUpdate.subcategory ?? null;
+    if (productUpdate.materialAr !== undefined) cleanUpdate.materialAr = productUpdate.materialAr ?? null;
+    if (productUpdate.materialEn !== undefined) cleanUpdate.materialEn = productUpdate.materialEn ?? null;
+    if (productUpdate.sku !== undefined) cleanUpdate.sku = productUpdate.sku ?? null;
+    if (productUpdate.metaTitle !== undefined) cleanUpdate.metaTitle = productUpdate.metaTitle ?? null;
+    if (productUpdate.metaDescription !== undefined) cleanUpdate.metaDescription = productUpdate.metaDescription ?? null;
+    
+    // Handle array fields with proper type safety
+    if (productUpdate.images !== undefined) cleanUpdate.images = (productUpdate.images as string[]) ?? [];
+    if (productUpdate.tags !== undefined) cleanUpdate.tags = (productUpdate.tags as string[]) ?? [];
+    if (productUpdate.sizes !== undefined) cleanUpdate.sizes = (productUpdate.sizes as string[]) ?? [];
+    if (productUpdate.colors !== undefined) cleanUpdate.colors = (productUpdate.colors as { nameAr: string; nameEn: string; hex: string }[]) ?? [];
+    
+    // Handle non-nullable fields directly
+    if (productUpdate.nameAr !== undefined) cleanUpdate.nameAr = productUpdate.nameAr;
+    if (productUpdate.nameEn !== undefined) cleanUpdate.nameEn = productUpdate.nameEn;
+    if (productUpdate.slug !== undefined) cleanUpdate.slug = productUpdate.slug;
+    if (productUpdate.mainImage !== undefined) cleanUpdate.mainImage = productUpdate.mainImage;
+    if (productUpdate.category !== undefined) cleanUpdate.category = productUpdate.category;
+    if (productUpdate.featured !== undefined) cleanUpdate.featured = productUpdate.featured;
+    if (productUpdate.isNew !== undefined) cleanUpdate.isNew = productUpdate.isNew;
+    if (productUpdate.isCustomizable !== undefined) cleanUpdate.isCustomizable = productUpdate.isCustomizable;
+    if (productUpdate.stock !== undefined) cleanUpdate.stock = productUpdate.stock;
+    
     const updatedProduct: Product = {
       ...product,
-      ...productUpdate,
+      ...cleanUpdate,
       updatedAt: new Date(),
     };
     this.products.set(id, updatedProduct);
@@ -1087,16 +1246,18 @@ export class MemStorage implements IStorage {
       slug: insertProduct.slug,
       descriptionAr: insertProduct.descriptionAr ?? null,
       descriptionEn: insertProduct.descriptionEn ?? null,
-      price: insertProduct.price,
+      luxuryTaglineAr: insertProduct.luxuryTaglineAr ?? null,
+      luxuryTaglineEn: insertProduct.luxuryTaglineEn ?? null,
+      price: insertProduct.price ?? null,
       salePrice: insertProduct.salePrice ?? null,
       mainImage: insertProduct.mainImage,
-      images: insertProduct.images ?? [],
+      images: (insertProduct.images as string[]) ?? [],
       brandId: insertProduct.brandId ?? null,
       category: insertProduct.category,
       subcategory: insertProduct.subcategory ?? null,
-      tags: insertProduct.tags ?? [],
-      sizes: insertProduct.sizes ?? [],
-      colors: insertProduct.colors ?? [],
+      tags: (insertProduct.tags as string[]) ?? [],
+      sizes: (insertProduct.sizes as string[]) ?? [],
+      colors: (insertProduct.colors as { nameAr: string; nameEn: string; hex: string }[]) ?? [],
       materialAr: insertProduct.materialAr ?? null,
       materialEn: insertProduct.materialEn ?? null,
       featured: insertProduct.featured ?? false,
