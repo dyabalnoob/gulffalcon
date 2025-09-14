@@ -34,6 +34,7 @@ const categories = [
   { id: "vests", nameAr: "السديريات", nameEn: "Vests", icon: Shirt },
   { id: "prayer-beads", nameAr: "المسابح", nameEn: "Prayer Beads", icon: Circle },
   { id: "walking-sticks", nameAr: "العصي والمعاكز", nameEn: "Walking Sticks", icon: Zap },
+  { id: "women-collection", nameAr: "المجموعة النسائية - شتاء 2026", nameEn: "Women's Collection - Winter 2026", icon: Sparkles },
   { id: "thobes", nameAr: "الثياب", nameEn: "Thobes", icon: Shirt },
   { id: "mishlahs", nameAr: "المشالح", nameEn: "Mishlahs", icon: Shirt },
   { id: "bishts", nameAr: "البشوت", nameEn: "Bishts", icon: Shirt },
