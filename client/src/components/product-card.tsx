@@ -45,9 +45,19 @@ export default function ProductCard({ product, brand, onClick }: ProductCardProp
             {isRTL ? brand.nameAr : brand.nameEn}
           </p>
         )}
+        {/* متوفر - Available Status */}
+        <div className="mb-3">
+          <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <p className="text-lg font-bold text-green-600 dark:text-green-400" data-testid={`text-available-status-${product.id}`}>
+              {isRTL ? "متوفر" : "Available"}
+            </p>
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          </div>
+        </div>
         {/* Luxury Tagline */}
         <div className="mb-3">
-          <p className="text-sm italic text-primary font-medium leading-relaxed text-center" data-testid={`text-luxury-tagline-${product.id}`}>
+          <p className="text-xs italic text-muted-foreground leading-relaxed text-center" data-testid={`text-luxury-tagline-${product.id}`}>
             "{isRTL ? product.luxuryTaglineAr : product.luxuryTaglineEn}"
           </p>
         </div>
