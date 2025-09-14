@@ -84,12 +84,6 @@ export default function Products() {
 
     // Sort products
     switch (sortBy) {
-      case "price-asc":
-        filtered.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-        break;
-      case "price-desc":
-        filtered.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-        break;
       case "featured":
         filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
         break;
@@ -287,10 +281,7 @@ export default function Products() {
               {filteredAndSortedProducts.map((product, index) => {
                 const brand = brands.find(b => b.id === product.brandId);
                 const isInWishlist = wishlist.includes(product.id);
-                const hasDiscount = product.salePrice && parseFloat(product.salePrice) < parseFloat(product.price);
-                const discountPercentage = hasDiscount 
-                  ? Math.round((1 - parseFloat(product.salePrice!) / parseFloat(product.price)) * 100)
-                  : 0;
+                // Removed price calculations as products now use luxury taglines
 
                 return (
                   <motion.div
@@ -324,12 +315,7 @@ export default function Products() {
                               {isRTL ? "مميز" : "Featured"}
                             </Badge>
                           )}
-                          {hasDiscount && (
-                            <Badge className="bg-red-500 text-white">
-                              <TrendingUp className="w-3 h-3 mr-1" />
-                              {discountPercentage}%
-                            </Badge>
-                          )}
+                          {/* Removed discount badge as prices are no longer used */}
                         </div>
 
                         {/* Quick Actions */}
@@ -402,22 +388,11 @@ export default function Products() {
                           </div>
                         )}
 
-                        {/* Price */}
-                        <div className="flex items-center gap-2">
-                          {hasDiscount ? (
-                            <>
-                              <span className="text-lg font-bold text-primary">
-                                {formatPrice(product.salePrice!)}
-                              </span>
-                              <span className="text-sm line-through opacity-60">
-                                {formatPrice(product.price)}
-                              </span>
-                            </>
-                          ) : (
-                            <span className="text-lg font-bold text-primary">
-                              {formatPrice(product.price)}
-                            </span>
-                          )}
+                        {/* Luxury Tagline */}
+                        <div className="mb-2">
+                          <p className="text-sm italic text-primary font-medium leading-relaxed text-center" data-testid={`text-luxury-tagline-${product.id}`}>
+                            "{isRTL ? product.luxuryTaglineAr : product.luxuryTaglineEn}"
+                          </p>
                         </div>
 
                         {/* Stock Status */}
@@ -530,25 +505,11 @@ export default function Products() {
                   </DialogDescription>
                 </DialogHeader>
 
-                {/* Price */}
-                <div className="flex items-center gap-3">
-                  {quickViewProduct.salePrice && parseFloat(quickViewProduct.salePrice) < parseFloat(quickViewProduct.price) ? (
-                    <>
-                      <span className="text-2xl font-bold text-primary">
-                        {formatPrice(quickViewProduct.salePrice)}
-                      </span>
-                      <span className="text-lg line-through opacity-60">
-                        {formatPrice(quickViewProduct.price)}
-                      </span>
-                      <Badge className="bg-red-500 text-white">
-                        {Math.round((1 - parseFloat(quickViewProduct.salePrice) / parseFloat(quickViewProduct.price)) * 100)}% {isRTL ? "خصم" : "OFF"}
-                      </Badge>
-                    </>
-                  ) : (
-                    <span className="text-2xl font-bold text-primary">
-                      {formatPrice(quickViewProduct.price)}
-                    </span>
-                  )}
+                {/* Luxury Tagline */}
+                <div className="mb-4">
+                  <blockquote className="text-lg italic text-primary font-semibold leading-relaxed text-center border-l-4 border-primary pl-4">
+                    "{isRTL ? quickViewProduct.luxuryTaglineAr : quickViewProduct.luxuryTaglineEn}"
+                  </blockquote>
                 </div>
 
                 {/* Material */}

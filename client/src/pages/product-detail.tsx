@@ -149,10 +149,6 @@ export default function ProductDetail() {
     "offers": {
       "@type": "Offer",
       "url": window.location.href,
-      "priceCurrency": "SAR",
-      "price": product.salePrice && parseFloat(product.salePrice) < parseFloat(product.price) 
-        ? product.salePrice 
-        : product.price,
       "availability": product.stock === 0 
         ? "https://schema.org/OutOfStock" 
         : product.stock && product.stock < 5 
@@ -181,10 +177,8 @@ export default function ProductDetail() {
         image={product.mainImage}
         url={window.location.href}
         type="product"
-        price={product.salePrice && parseFloat(product.salePrice) < parseFloat(product.price) 
-          ? product.salePrice 
-          : product.price}
-        currency="SAR"
+        price={undefined}
+        currency={undefined}
         availability={product.stock === 0 ? "out of stock" : "in stock"}
         brand={brand ? (isRTL ? brand.nameAr : brand.nameEn) : undefined}
         category={product.category}
@@ -320,25 +314,11 @@ export default function ProductDetail() {
               </div>
             </div>
 
-            {/* Price */}
-            <div className="flex items-center gap-3 flex-wrap">
-              {product.salePrice && parseFloat(product.salePrice) < parseFloat(product.price) ? (
-                <>
-                  <span className="text-3xl font-bold text-primary" data-testid="sale-price">
-                    {formatPrice(product.salePrice)}
-                  </span>
-                  <span className="text-xl line-through opacity-60" data-testid="original-price">
-                    {formatPrice(product.price)}
-                  </span>
-                  <Badge className="bg-red-500 text-white">
-                    {Math.round((1 - parseFloat(product.salePrice) / parseFloat(product.price)) * 100)}% {isRTL ? "خصم" : "OFF"}
-                  </Badge>
-                </>
-              ) : (
-                <span className="text-3xl font-bold text-primary" data-testid="price">
-                  {formatPrice(product.price)}
-                </span>
-              )}
+            {/* Luxury Tagline */}
+            <div className="mb-6">
+              <blockquote className="text-lg italic text-primary font-semibold leading-relaxed text-center border-l-4 border-primary pl-4" data-testid="luxury-tagline">
+                "{isRTL ? product.luxuryTaglineAr : product.luxuryTaglineEn}"
+              </blockquote>
             </div>
 
             {/* Description */}

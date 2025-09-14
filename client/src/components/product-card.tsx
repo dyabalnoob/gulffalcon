@@ -45,21 +45,11 @@ export default function ProductCard({ product, brand, onClick }: ProductCardProp
             {isRTL ? brand.nameAr : brand.nameEn}
           </p>
         )}
-        <div className="flex items-center gap-2 justify-end mb-3">
-          {product.salePrice && parseFloat(product.salePrice) < parseFloat(product.price) ? (
-            <>
-              <span className="text-lg font-bold text-primary">
-                {product.salePrice} SAR
-              </span>
-              <span className="text-sm line-through opacity-60">
-                {product.price} SAR
-              </span>
-            </>
-          ) : (
-            <span className="text-lg font-bold text-primary">
-              {product.price} SAR
-            </span>
-          )}
+        {/* Luxury Tagline */}
+        <div className="mb-3">
+          <p className="text-sm italic text-primary font-medium leading-relaxed text-center" data-testid={`text-luxury-tagline-${product.id}`}>
+            "{isRTL ? product.luxuryTaglineAr : product.luxuryTaglineEn}"
+          </p>
         </div>
         {product.tags && product.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 justify-end">
