@@ -1,42 +1,9 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/public",
-  "routes": [
+  "version": 2,
+  "builds": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/images/(.*)",
-      "dest": "/images/$1"
-    },
-    {
-      "src": "/gallery-images.json",
-      "dest": "/gallery-images.json"
-    },
-    {
-      "src": "/partners/(.*)",
-      "dest": "/partners/$1"
-    },
-    {
-      "src": "/logo.png",
-      "dest": "/logo.png"
-    },
-    {
-      "src": "/GulfFalcon.webm",
-      "dest": "/GulfFalcon.webm"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "src": "next.config.js",
+      "use": "@vercel/next"
     }
-  ],
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  ]
 }
