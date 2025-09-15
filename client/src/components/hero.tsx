@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/language-context";
-import logoImage from "@assets/logo الصقر الخليجي_1757177659109.png";
-import heroVideo from "@assets/فيديو الخلفيه الصقر الخليجي  _1757181776177.mp4";
+const logoImage = "/logo.png";
+const heroVideo = "/hero-video.mp4";
 
 export default function Hero() {
   const { t } = useLanguage();

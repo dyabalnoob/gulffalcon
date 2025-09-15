@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import ThemeToggle from "@/components/theme-toggle";
 import LanguageToggle from "@/components/language-toggle";
 import { useLanguage } from "@/contexts/language-context";
-import logoImage from "@assets/logo الصقر الخليجي_1757177659109.png";
+const logoImage = "/logo.png";
 
 export default function Navbar() {
   const [location] = useLocation();

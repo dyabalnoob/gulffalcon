@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Instagram, Facebook, Camera, Twitter } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
-import logoImage from "@assets/logo الصقر الخليجي_1757177659109.png";
+const logoImage = "/logo.png";
 
 export default function Footer() {
   const { t } = useLanguage();
