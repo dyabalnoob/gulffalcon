@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import ThemeToggle from "../theme-toggle";
 import LanguageToggle from "../language-toggle";
-import { useLanguage } from "../../lib/contexts/language-context";
+import { useLanguage } from "@/lib/contexts/language-context";
 const logoImage = "/logo.png";
 
 export default function Navbar() {

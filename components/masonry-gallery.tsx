@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useIntersectionObserver } from "@/lib/hooks/use-intersection-observer";
 import type { GalleryItem } from "@shared/schema";
 
 interface MasonryGalleryProps {

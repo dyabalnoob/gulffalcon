@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/language-context";
+import { Button } from "./ui/button";
+import { useLanguage } from "@/lib/contexts/language-context";
 const logoImage = "/logo.png";
 const heroVideo = "/hero-video.mp4";
 

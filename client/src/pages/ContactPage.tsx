@@ -15,7 +15,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { useToast } from '../../../lib/hooks/use-toast'
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
-import { useLanguage } from '../../../lib/contexts/language-context'
+import { useLanguage } from '@/lib/contexts/language-context'
 import type { z } from 'zod'
 
 type ContactFormData = z.infer<typeof insertContactMessageSchema>

@@ -6,12 +6,356 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
-    <title>مؤسسة الصقر الخليجي - Gulf Falcon Corporation</title>
-    <meta name="description" content="مؤسسة الصقر الخليجي - منتجات فاخرة للرجال في الخليج العربي" />
+    <title>مؤسسة الصقر الخليجي - اتصل بنا</title>
+    <meta name="description" content="تواصل مع مؤسسة الصقر الخليجي للحصول على أفضل المنتجات الفاخرة" />
     <link rel="icon" type="image/png" href="/logo.png" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Cormorant Garamond', serif;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+        color: #ffffff;
+        min-height: 100vh;
+        direction: rtl;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .logo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1rem;
+        background: url('/logo.png') center/contain no-repeat;
+      }
+
+      .title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #d4af37;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #cccccc;
+        font-weight: 300;
+      }
+
+      .form-container {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #d4af37;
+      }
+
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s ease;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: #d4af37;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+      }
+
+      .form-input::placeholder,
+      .form-textarea::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .form-textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        color: #000000;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .submit-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+      }
+
+      .submit-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .message {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 500;
+        display: none;
+      }
+
+      .message.success {
+        background: rgba(34, 197, 94, 0.2);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #22c55e;
+      }
+
+      .message.error {
+        background: rgba(239, 68, 68, 0.2);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #ef4444;
+      }
+
+      .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: #ffffff;
+        animation: spin 1s ease-in-out infinite;
+        margin-left: 10px;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+        
+        .form-container {
+          padding: 1.5rem;
+        }
+        
+        .title {
+          font-size: 2rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="container">
+      <div class="header">
+        <div class="logo"></div>
+        <h1 class="title" data-testid="page-title">مؤسسة الصقر الخليجي</h1>
+        <p class="subtitle" data-testid="page-subtitle">تواصل معنا للحصول على أفضل المنتجات الفاخرة</p>
+      </div>
+
+      <div class="form-container">
+        <form id="contactForm" data-testid="contact-form">
+          <div class="form-group">
+            <label for="name" class="form-label">الاسم الكامل *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              placeholder="أدخل اسمك الكامل"
+              required
+              data-testid="input-name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">البريد الإلكتروني *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="أدخل بريدك الإلكتروني"
+              required
+              data-testid="input-email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="form-label">رقم الهاتف</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-input"
+              placeholder="أدخل رقم هاتفك"
+              data-testid="input-phone"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">الموضوع *</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              class="form-input"
+              placeholder="موضوع الرسالة"
+              required
+              data-testid="input-subject"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">الرسالة *</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-textarea"
+              placeholder="اكتب رسالتك هنا..."
+              required
+              data-testid="input-message"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-button" data-testid="button-submit">
+            <span id="submitText">إرسال الرسالة</span>
+          </button>
+
+          <div id="responseMessage" class="message" data-testid="response-message"></div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitButton = e.target.querySelector('[data-testid="button-submit"]');
+        const submitText = document.getElementById('submitText');
+        const responseMessage = document.getElementById('responseMessage');
+        
+        // Get form data
+        const formData = new FormData(e.target);
+        const data = {
+          name: formData.get('name').trim(),
+          email: formData.get('email').trim(),
+          phone: formData.get('phone').trim(),
+          subject: formData.get('subject').trim(),
+          message: formData.get('message').trim()
+        };
+        
+        // Basic validation
+        if (!data.name || !data.email || !data.subject || !data.message) {
+          showMessage('جميع الحقول المطلوبة (*) يجب ملؤها', 'error');
+          return;
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+          showMessage('يرجى إدخال بريد إلكتروني صحيح', 'error');
+          return;
+        }
+        
+        // Show loading state
+        submitButton.disabled = true;
+        submitText.innerHTML = 'جاري الإرسال... <span class="loading"></span>';
+        hideMessage();
+        
+        try {
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          });
+          
+          const result = await response.json();
+          
+          if (response.ok && result.success) {
+            showMessage('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.', 'success');
+            e.target.reset();
+          } else {
+            throw new Error(result.error || 'فشل في إرسال الرسالة');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          showMessage('حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.', 'error');
+        } finally {
+          // Reset button state
+          submitButton.disabled = false;
+          submitText.innerHTML = 'إرسال الرسالة';
+        }
+      });
+      
+      function showMessage(text, type) {
+        const messageEl = document.getElementById('responseMessage');
+        messageEl.textContent = text;
+        messageEl.className = `message ${type}`;
+        messageEl.style.display = 'block';
+      }
+      
+      function hideMessage() {
+        const messageEl = document.getElementById('responseMessage');
+        messageEl.style.display = 'none';
+      }
+      
+      // Add some interactive effects
+      document.querySelectorAll('.form-input, .form-textarea').forEach(input => {
+        input.addEventListener('focus', function() {
+          this.parentElement.style.transform = 'scale(1.02)';
+        });
+        
+        input.addEventListener('blur', function() {
+          this.parentElement.style.transform = 'scale(1)';
+        });
+      });
+    </script>
   </body>
 </html>

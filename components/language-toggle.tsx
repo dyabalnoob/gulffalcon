@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useLanguage } from "@/contexts/language-context";
+import { useLanguage } from "@/lib/contexts/language-context";
 
 export default function LanguageToggle() {
   const { language, setLanguage } = useLanguage();

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLanguage } from "@/contexts/language-context";
+import { useLanguage } from "@/lib/contexts/language-context";
 
 interface SEOMetaProps {
   title?: string;

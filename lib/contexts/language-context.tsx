@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { useSyncExternalStore } from 'react';
+import { ReactNode } from 'react';
 
 type Language = 'ar' | 'en';
 
@@ -198,62 +199,128 @@ const translations: Record<Language, Translations> = {
   },
 };
 
-interface LanguageContextType {
-  language: Language;
+// Define window store interface
+interface LanguageStore {
+  getLanguage: () => Language;
   setLanguage: (lang: Language) => void;
-  t: Translations;
-  isRTL: boolean;
+  subscribe: (listener: () => void) => () => void;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+// Declare window property
+declare global {
+  interface Window {
+    __LANGUAGE_STORE__?: LanguageStore;
+  }
+}
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Initialize language with default value (SSR safe)
-  const [language, setLanguageState] = useState<Language>('ar');
+// Initialize window-scoped singleton store
+function initializeLanguageStore(): LanguageStore {
+  if (typeof window === 'undefined') {
+    // Server-side fallback
+    return {
+      getLanguage: () => 'ar',
+      setLanguage: () => {},
+      subscribe: () => () => {},
+    };
+  }
 
-  // Load saved language from localStorage on client-side
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedLang = localStorage.getItem('language');
-      if (savedLang === 'en' || savedLang === 'ar') {
-        setLanguageState(savedLang);
-      }
+  if (window.__LANGUAGE_STORE__) {
+    return window.__LANGUAGE_STORE__;
+  }
+
+  const listeners = new Set<() => void>();
+
+  // Initialize language from localStorage with fallback
+  let currentLanguage: Language = 'ar';
+  try {
+    const savedLang = localStorage.getItem('language');
+    if (savedLang === 'en' || savedLang === 'ar') {
+      currentLanguage = savedLang;
     }
-  }, []);
+  } catch (error) {
+    // Ignore localStorage errors (private browsing, etc.)
+    console.warn('Failed to load language from localStorage:', error);
+  }
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('language', lang);
+  // Update document properties
+  const updateDocument = (lang: Language) => {
+    try {
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
+    } catch (error) {
+      // Ignore document errors
+      console.warn('Failed to update document properties:', error);
     }
   };
 
-  // Update document direction when language changes
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-      document.documentElement.lang = language;
-    }
-  }, [language]);
+  // Initialize document
+  updateDocument(currentLanguage);
 
-  const value: LanguageContextType = {
+  const store: LanguageStore = {
+    getLanguage: () => currentLanguage,
+    
+    setLanguage: (lang: Language) => {
+      if (lang !== currentLanguage) {
+        currentLanguage = lang;
+        
+        // Save to localStorage
+        try {
+          localStorage.setItem('language', lang);
+        } catch (error) {
+          console.warn('Failed to save language to localStorage:', error);
+        }
+        
+        // Update document
+        updateDocument(lang);
+        
+        // Notify all subscribers
+        listeners.forEach(listener => {
+          try {
+            listener();
+          } catch (error) {
+            console.warn('Language store listener error:', error);
+          }
+        });
+      }
+    },
+    
+    subscribe: (listener: () => void) => {
+      listeners.add(listener);
+      return () => {
+        listeners.delete(listener);
+      };
+    }
+  };
+
+  // Store in window for singleton behavior
+  window.__LANGUAGE_STORE__ = store;
+  
+  return store;
+}
+
+// Get the store instance
+const getLanguageStore = () => initializeLanguageStore();
+
+// Hook that uses the external store
+export function useLanguage() {
+  const store = getLanguageStore();
+  
+  const language = useSyncExternalStore(
+    store.subscribe,
+    store.getLanguage,
+    () => 'ar' // SSR snapshot
+  );
+
+  return {
     language,
-    setLanguage,
-    t: translations[language],
+    setLanguage: store.setLanguage,
+    t: translations[language as Language],
     isRTL: language === 'ar',
   };
-
-  return (
-    <LanguageContext.Provider value={value}>
-      {children}
-    </LanguageContext.Provider>
-  );
 }
 
-export function useLanguage() {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
+// Pass-through provider component (preserves existing imports)
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  // Simply return children - all state is now managed by the external store
+  return children;
 }
