@@ -7,8 +7,9 @@
   "/api/contact": "pages/api/contact.js",
   "/api/gallery": "pages/api/gallery.js",
   "/api/products/[slug]": "pages/api/products/[slug].js",
-  "/api/products/featured": "pages/api/products/featured.js",
   "/api/products": "pages/api/products.js",
-  "/": "pages/index.js",
-  "/products": "pages/products.js"
+  "/api/products/featured": "pages/api/products/featured.js",
+  "/": "pages/index.html",
+  "/products": "pages/products.html",
+  "/404": "pages/404.html"
 }
