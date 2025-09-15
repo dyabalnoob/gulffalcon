@@ -1,4 +1,4 @@
-import { storage } from '../../../server/storage'
+import { storage } from '../../../lib/storage'
 
 export default async function handler(req, res) {
   // Set CORS headers
