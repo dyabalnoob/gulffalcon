@@ -59,7 +59,7 @@ export default function ProductFilters({ brands, onFilter }: ProductFiltersProps
             <SelectItem value="all">كل الماركات</SelectItem>
             {brands.map((brand) => (
               <SelectItem key={brand.id} value={brand.id}>
-                {brand.name}
+                {brand.nameAr}
               </SelectItem>
             ))}
           </SelectContent>

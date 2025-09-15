@@ -37,7 +37,7 @@ export default function BrandMarquee() {
                 whileHover={{ scale: 1.08 }}
                 data-testid={`brand-marquee-${brand.slug}`}
               >
-                {brand.name}
+                {brand.nameAr}
               </motion.div>
             ))}
           </motion.div>

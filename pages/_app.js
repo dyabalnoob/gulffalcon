@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { LanguageProvider } from '../lib/language-context'
+import { LanguageProvider } from '../lib/contexts/language-context'
 import { useState } from 'react'
 
 function MyApp({ Component, pageProps }) {

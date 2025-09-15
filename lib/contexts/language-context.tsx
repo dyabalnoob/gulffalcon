@@ -208,21 +208,32 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Initialize language from localStorage or default to 'ar'
-  const [language, setLanguageState] = useState<Language>(() => {
-    const savedLang = localStorage.getItem('language');
-    return (savedLang === 'en' || savedLang === 'ar') ? savedLang : 'ar';
-  });
+  // Initialize language with default value (SSR safe)
+  const [language, setLanguageState] = useState<Language>('ar');
+
+  // Load saved language from localStorage on client-side
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('language');
+      if (savedLang === 'en' || savedLang === 'ar') {
+        setLanguageState(savedLang);
+      }
+    }
+  }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem('language', lang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', lang);
+    }
   };
 
   // Update document direction when language changes
   useEffect(() => {
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = language;
+    if (typeof window !== 'undefined') {
+      document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = language;
+    }
   }, [language]);
 
   const value: LanguageContextType = {

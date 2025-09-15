@@ -2,8 +2,7 @@
 @import 'tailwindcss/components'; 
 @import 'tailwindcss/utilities';
 
-/* Import the existing styles from client */
-@import url('../client/src/index.css');
+/* Global styles for Al-Saqr Al-Khaleeji luxury fashion */
 
 :root {
   --background: 0 0% 100%;

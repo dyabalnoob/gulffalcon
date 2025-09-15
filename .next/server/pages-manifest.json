@@ -1,1 +1,14 @@
-{}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/api/brands/[slug]": "pages/api/brands/[slug].js",
+  "/api/brands": "pages/api/brands.js",
+  "/api/contact": "pages/api/contact.js",
+  "/api/gallery": "pages/api/gallery.js",
+  "/api/products/[slug]": "pages/api/products/[slug].js",
+  "/api/products/featured": "pages/api/products/featured.js",
+  "/api/products": "pages/api/products.js",
+  "/": "pages/index.js",
+  "/products": "pages/products.js"
+}
