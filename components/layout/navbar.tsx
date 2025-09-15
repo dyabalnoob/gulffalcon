@@ -1,13 +1,12 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
-import ThemeToggle from "@/components/theme-toggle";
-import LanguageToggle from "@/components/language-toggle";
-import { useLanguage } from "@/contexts/language-context";
+import ThemeToggle from "../theme-toggle";
+import LanguageToggle from "../language-toggle";
+import { useLanguage } from "../../lib/contexts/language-context";
 const logoImage = "/logo.png";
 
 export default function Navbar() {
-  const { pathname } = useRouter();
+  const [pathname] = useLocation();
   const { t } = useLanguage();
   
   const navLinks = [

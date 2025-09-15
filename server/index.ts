@@ -2,7 +2,7 @@ import express from 'express';
 import { createServer } from 'http';
 import path from 'path';
 import { createViteServer } from './vite.js';
-import routes from './routes.js';
+import routes from './routes';
 
 async function startServer() {
   const app = express();
@@ -28,7 +28,7 @@ async function startServer() {
     });
   }
 
-  const PORT = process.env.PORT || 5000;
+  const PORT = parseInt(process.env.PORT || '5000', 10);
   
   server.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
