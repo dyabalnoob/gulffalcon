@@ -1,7 +1,5 @@
 import Layout from '../../../components/layout/Layout'
-import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { insertContactMessageSchema } from '../../../shared/schema'
@@ -14,14 +12,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card'
 import { useToast } from '../../../lib/hooks/use-toast'
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare } from 'lucide-react'
-import { Helmet } from 'react-helmet-async'
-import { useLanguage } from '@/lib/contexts/language-context'
 import type { z } from 'zod'
 
 type ContactFormData = z.infer<typeof insertContactMessageSchema>
 
 export default function ContactPage() {
-  const { t, isRTL } = useLanguage()
   const { toast } = useToast()
 
   const form = useForm<ContactFormData>({
@@ -44,8 +39,8 @@ export default function ContactPage() {
     },
     onSuccess: () => {
       toast({
-        title: isRTL ? "تم الإرسال بنجاح" : "Sent Successfully",
-        description: isRTL ? "شكراً لتواصلكم معنا. سنرد عليكم قريباً" : "Thank you for contacting us. We'll get back to you soon.",
+        title: "تم الإرسال بنجاح",
+        description: "شكراً لتواصلكم معنا. سنرد عليكم قريباً",
       })
       form.reset()
     },
@@ -53,8 +48,8 @@ export default function ContactPage() {
       console.error('Contact form error:', error)
       toast({
         variant: "destructive",
-        title: isRTL ? "خطأ في الإرسال" : "Send Error",
-        description: isRTL ? "حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى" : "An error occurred while sending your message. Please try again.",
+        title: "خطأ في الإرسال",
+        description: "حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى",
       })
     },
   })
@@ -66,232 +61,225 @@ export default function ContactPage() {
   const contactInfo = [
     {
       icon: <MapPin className="w-5 h-5" />,
-      title: t.contact.info.address,
-      content: "المملكة العربية السعودية، الرياض",
+      title: "العنوان",
+      content: "المملكة العربية السعودية، الرياض، أسواق القرية الشعبية",
     },
     {
       icon: <Phone className="w-5 h-5" />,
-      title: t.contact.info.phone,
+      title: "الهاتف",
       content: "+966 50 123 4567",
     },
     {
       icon: <Mail className="w-5 h-5" />,
-      title: t.contact.info.email,
+      title: "البريد الإلكتروني",
       content: "info@gulffalcon.sa",
     },
     {
       icon: <Clock className="w-5 h-5" />,
-      title: t.contact.info.workingHours,
-      content: isRTL ? "السبت - الخميس: 9:00 ص - 6:00 م" : "Saturday - Thursday: 9:00 AM - 6:00 PM",
+      title: "ساعات العمل",
+      content: "السبت - الخميس: 9:00 ص - 6:00 م",
     },
   ]
 
   return (
-    <>
-      <Helmet>
-        <title>تواصل معنا - مؤسسة الصقر الخليجي</title>
-        <meta name="description" content="تواصل مع مؤسسة الصقر الخليجي للاستفسارات والطلبات الخاصة" />
-      </Helmet>
-      <Layout>
-        <motion.div
-          className="container mx-auto px-4 py-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">
-              {t.contact.title}
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {t.contact.subtitle}
-            </p>
-          </motion.div>
+    <Layout>
+      <main className="container mx-auto px-4 py-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4" data-testid="contact-title">
+            تواصل معنا
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" data-testid="contact-subtitle">
+            نحن هنا لخدمتك. تواصل معنا لأي استفسار أو لحجز موعد للقياس
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Contact Form */}
-            <motion.div
-              className="lg:col-span-2"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <Card className="glass-card professional-border">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-2xl">
-                    <MessageSquare className="w-6 h-6" />
-                    أرسل لنا رسالة
-                  </CardTitle>
-                  <CardDescription>
-                    املأ النموذج أدناه وسنتواصل معك في أقرب وقت ممكن
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <FormField
-                          control={form.control}
-                          name="name"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{t.contact.form.name} *</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="اسمك الكامل"
-                                  {...field}
-                                  className="rounded-xl"
-                                  data-testid="input-contact-name"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="email"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{t.contact.form.email} *</FormLabel>
-                              <FormControl>
-                                <Input
-                                  type="email"
-                                  placeholder="your@email.com"
-                                  {...field}
-                                  className="rounded-xl"
-                                  data-testid="input-contact-email"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <FormField
-                          control={form.control}
-                          name="phone"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{t.contact.form.phone}</FormLabel>
-                              <FormControl>
-                                <Input
-                                  type="tel"
-                                  placeholder="+966 50 123 4567"
-                                  {...field}
-                                  value={field.value || ''}
-                                  className="rounded-xl"
-                                  data-testid="input-contact-phone"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="subject"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>{t.contact.form.subject} *</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger className="rounded-xl" data-testid="select-contact-subject">
-                                    <SelectValue placeholder="اختر موضوع الرسالة" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  <SelectItem value="general">{t.contact.form.generalInquiry}</SelectItem>
-                                  <SelectItem value="product">{t.contact.form.productInquiry}</SelectItem>
-                                  <SelectItem value="custom">{t.contact.form.customDesign}</SelectItem>
-                                  <SelectItem value="other">{t.contact.form.other}</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Contact Form */}
+          <div className="lg:col-span-2">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-2xl" data-testid="form-title">
+                  <MessageSquare className="w-6 h-6" />
+                  أرسل لنا رسالة
+                </CardTitle>
+                <CardDescription data-testid="form-description">
+                  املأ النموذج أدناه وسنتواصل معك في أقرب وقت ممكن
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" data-testid="contact-form">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
-                        name="message"
+                        name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>{t.contact.form.message} *</FormLabel>
+                            <FormLabel>الاسم *</FormLabel>
                             <FormControl>
-                              <Textarea
-                                placeholder="اكتب رسالتك هنا..."
+                              <Input
+                                placeholder="اسمك الكامل"
                                 {...field}
-                                rows={6}
-                                className="rounded-xl resize-none"
-                                data-testid="input-contact-message"
+                                data-testid="input-contact-name"
                               />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
-
-                      <Button
-                        type="submit"
-                        size="lg"
-                        className="w-full rounded-xl font-bold text-lg h-12"
-                        disabled={contactMutation.isPending}
-                        data-testid="button-contact-submit"
-                      >
-                        {contactMutation.isPending ? (
-                          "جاري الإرسال..."
-                        ) : (
-                          <>
-                            <Send className="w-5 h-5 ml-2" />
-                            {t.contact.form.submit}
-                          </>
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>البريد الإلكتروني *</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="email"
+                                placeholder="your@email.com"
+                                {...field}
+                                data-testid="input-contact-email"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
                         )}
-                      </Button>
-                    </form>
-                  </Form>
-                </CardContent>
-              </Card>
-            </motion.div>
+                      />
+                    </div>
 
-            {/* Contact Information */}
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={index}
-                  className="glass-card p-6 rounded-2xl professional-border"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg professional-border bg-gradient-to-br from-green-500/10 to-teal-600/10 grid place-items-center text-primary">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>رقم الهاتف</FormLabel>
+                            <FormControl>
+                              <Input
+                                type="tel"
+                                placeholder="+966 50 123 4567"
+                                {...field}
+                                value={field.value || ''}
+                                data-testid="input-contact-phone"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="subject"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>الموضوع *</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger data-testid="select-contact-subject">
+                                  <SelectValue placeholder="اختر موضوع الرسالة" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="general">استفسار عام</SelectItem>
+                                <SelectItem value="product">استفسار عن منتج</SelectItem>
+                                <SelectItem value="custom">تصميم خاص</SelectItem>
+                                <SelectItem value="other">أخرى</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>الرسالة *</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="اكتب رسالتك هنا..."
+                              {...field}
+                              rows={6}
+                              className="resize-none"
+                              data-testid="input-contact-message"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full bg-yellow-600 hover:bg-yellow-700 font-bold text-lg h-12"
+                      disabled={contactMutation.isPending}
+                      data-testid="button-contact-submit"
+                    >
+                      {contactMutation.isPending ? (
+                        "جاري الإرسال..."
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5 mr-2" />
+                          إرسال الرسالة
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </Form>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Contact Information */}
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle data-testid="contact-info-title">معلومات التواصل</CardTitle>
+                <CardDescription data-testid="contact-info-description">
+                  يمكنك التواصل معنا مباشرة عبر المعلومات التالية
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {contactInfo.map((info, index) => (
+                  <div key={index} className="flex items-start gap-3" data-testid={`contact-info-${index}`}>
+                    <div className="text-yellow-600 mt-1">
                       {info.icon}
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">{info.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{info.content}</p>
+                      <h4 className="font-semibold text-gray-800 dark:text-white" data-testid={`contact-info-title-${index}`}>
+                        {info.title}
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400" data-testid={`contact-info-content-${index}`}>
+                        {info.content}
+                      </p>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Map Placeholder */}
+            <Card>
+              <CardHeader>
+                <CardTitle data-testid="map-title">موقعنا</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="w-full h-48 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center" data-testid="map-placeholder">
+                  <div className="text-center">
+                    <MapPin className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                    <p className="text-gray-500 text-sm">خريطة الموقع</p>
+                    <p className="text-gray-400 text-xs">أسواق القرية الشعبية، الرياض</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </motion.div>
-      </Layout>
-    </>
+        </div>
+      </main>
+    </Layout>
   )
 }
