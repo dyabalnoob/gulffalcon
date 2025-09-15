@@ -26,6 +26,18 @@ export interface IStorage {
   createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
 }
 
+/**
+ * In-Memory Storage Implementation
+ * 
+ * SERVERLESS COMPATIBILITY NOTES:
+ * - All data is initialized from hardcoded arrays in constructor on each cold start
+ * - Brands, Products, and Gallery data persist correctly in serverless environments
+ * - Contact messages are stored in memory but DO NOT persist across serverless function invocations
+ * - For production serverless deployment, consider implementing persistent storage for contact messages
+ *   (e.g., database integration, file storage, or external service)
+ * 
+ * This implementation is filesystem-independent and suitable for Vercel deployment.
+ */
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
   private brands: Map<string, Brand>;
